@@ -59,6 +59,7 @@ const Header = () => {
                         <Image priority={true} className="w-14 cursor-pointer hover:scale-95 duration-500" src={logo} alt="Logo" />
                     </motion.div>
 
+                    {/* Desktop Version */}
                     <div className="hidden md:flex gap-5">
                         {menuItems.map(({ name, duration }) => (
                             <motion.p
