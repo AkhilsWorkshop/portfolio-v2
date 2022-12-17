@@ -144,7 +144,7 @@ const Header = () => {
                                         {name}
                                     </motion.p>
                                 ))}
-                                <a href="/Resume-AkhilKumar.pdf" target="_blank" rel="noreferrer" className="text-fifth font-bold flex items-center rounded-md border-2 bg-primary/70 p-2">My Resume
+                                <a href="/Resume-AkhilKumar.pdf" target="_blank" rel="noreferrer" className="text-fifth font-bold flex items-center rounded-md bg-primary/70 p-2 px-3">My Resume
                                 </a>
                                 <div className="flex gap-3">
                                     <a href="https://github.com/AkhilsWorkshop" target="_blank" rel="noreferrer">
