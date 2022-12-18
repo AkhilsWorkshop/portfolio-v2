@@ -41,7 +41,7 @@ const Header = () => {
                 <nav className="max-w-screen-lg flex justify-between items-center w-full">
                     <motion.div
                         initial={{
-                            x: "40vw",
+                            x: "30vw",
                             y: "50vh",
                             opacity: 0,
                             scale: 2
