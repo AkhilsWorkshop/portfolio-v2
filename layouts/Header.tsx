@@ -37,7 +37,7 @@ const Header = () => {
     return (
         <>
             <header className="fixed flex justify-center items-center w-full h-12 text-secondary
-        px-4 shadow-xl transition-all ease-in duration-300 bg-black/90 backdrop-blur">
+        px-4 shadow-xl transition-all ease-in duration-300 bg-black/60 backdrop-blur z-50">
                 <nav className="max-w-screen-lg flex justify-between items-center w-full">
                     <motion.div
                         initial={{
