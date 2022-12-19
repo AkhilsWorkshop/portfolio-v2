@@ -124,7 +124,7 @@ const Header = () => {
                         <Hamburger toggled={menu} toggle={setMenu} color="#ffffff" />
                     </motion.div>
 
-                    <div className={`md:hidden flex flex-col absolute right-0 top-12 w-full h-[calc(100vh_-_3rem)] bg-black/90 transition-all ease-in-out duration-300 z-10 ${menu ? 'backdrop-blur-sm' : 'translate-x-[100%]'}`}>
+                    <div className={`md:hidden flex flex-col absolute right-0 top-12 w-full h-[calc(100vh_-_3rem)] bg-[#050505] transition-all ease-in-out duration-300 z-10 backdrop-blur-lg ${menu ? 'backdrop-blur-lg' : 'translate-x-[100%]'}`}>
 
                         <div className="flex flex-col justify-between items-start w-full h-full p-14">
                             <div className="flex flex-col justify-center items-start gap-6">

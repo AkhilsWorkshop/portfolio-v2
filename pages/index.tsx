@@ -2,8 +2,9 @@ import Head from 'next/head'
 import Header from '../layouts/Header'
 import { useEffect, useState } from 'react'
 import Loading from '../layouts/Loading'
+import Home from './Home'
 
-const Home = () => {
+const IndexPage = () => {
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
@@ -22,10 +23,11 @@ const Home = () => {
           </Head>
 
           <Header />
+          <Home />
         </div>
       }
     </>
   )
 }
 
-export default Home
+export default IndexPage
