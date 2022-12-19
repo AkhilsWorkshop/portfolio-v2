@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import React from 'react'
 import { BsChevronDown, BsDownload } from "react-icons/bs"
 import { FiExternalLink } from "react-icons/fi"
@@ -40,10 +41,11 @@ const Hero = () => {
                         </a>
 
                     </div>
-                    <div className="flex justify-center">
-                        <BsChevronDown className="text-primary p-2 mt-5 sm:mt-10 rounded-full hover:bg-primary/20 duration-300 cursor-pointer" size={50} />
-                    </div>
-
+                    <Link href="#about" scroll={true} >
+                        <div className="flex justify-center">
+                            <BsChevronDown className="text-primary p-2 mt-5 sm:mt-10 rounded-full hover:bg-primary/20 duration-300 cursor-pointer" size={50} />
+                        </div>
+                    </Link>
                 </div>
 
 
