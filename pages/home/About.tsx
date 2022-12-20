@@ -2,7 +2,11 @@ import React from 'react'
 import Title from '../../components/Title'
 import { motion } from 'framer-motion'
 
-const About = () => {
+type Props = {
+    Title: React.ComponentType
+}
+
+const About = ({ Title }: Props) => {
     return (
         <div className="min-h-screen lg:h-screen w-full bg-gradient-to-br from-bgDark via-black to-bgDark text-secondary">
 
