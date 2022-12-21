@@ -3,8 +3,15 @@ import Header from '../layouts/Header'
 import { useEffect, useState } from 'react'
 import Loading from '../layouts/Loading'
 import Home from './Home'
+import { GetStaticProps } from 'next'
+import { Skills } from '../typings'
+import { fetchSkills } from '../utils/fetchSkills'
 
-const IndexPage = () => {
+type Props = {
+  skills: Skills[]
+}
+
+const IndexPage = ({ skills }: Props) => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -23,7 +30,7 @@ const IndexPage = () => {
           </Head>
 
           <Header />
-          <Home />
+          <Home props={skills} />
         </div>
       }
     </>
@@ -31,3 +38,14 @@ const IndexPage = () => {
 }
 
 export default IndexPage
+
+export const getStaticProps: GetStaticProps<Props> = async () => {
+  const skills: Skills[] = await fetchSkills()
+
+  return {
+    props: {
+      skills
+    },
+    revalidate: 10
+  }
+}

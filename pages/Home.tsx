@@ -1,10 +1,14 @@
 import React from 'react'
 import Hero from './home/Hero'
 import About from './home/About'
-import Skills from './home/Skills'
+import { Skills } from '../typings'
+import SkillSection from './home/SkillSection'
 
+type Props = {
+    skills: Skills[];
+}
 
-const Home = () => {
+const Home = ({ skills }: Props) => {
     return (
         <>
             <section id='hero' className='snap-center'>
@@ -14,7 +18,7 @@ const Home = () => {
                 <About />
             </section>
             <section id='skills' className='snap-center'>
-                <Skills />
+                <SkillSection skills={skills} />
             </section>
         </>
     )

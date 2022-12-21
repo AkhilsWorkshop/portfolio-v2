@@ -16,4 +16,4 @@ export const urlFor = (source: any) => {
     createImageUrlBuilder(client).image(source)
 }
 
-const data = await client.fetch(groq`*[]`)
+// const data = await client.fetch(groq`*[]`)
