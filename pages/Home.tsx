@@ -12,13 +12,13 @@ const Home = ({ skills }: Props) => {
     console.log("home", skills)
     return (
         <>
-            <section id='hero' className='snap-center'>
+            <section id='hero'>
                 <Hero />
             </section>
-            <section id='about' className='snap-center'>
+            <section id='about'>
                 <About />
             </section>
-            <section id='skills' className='snap-center'>
+            <section id='skills'>
                 <SkillSection skills={skills} />
             </section>
         </>

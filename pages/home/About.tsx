@@ -2,11 +2,7 @@ import React from 'react'
 import Title from '../../components/Title'
 import { motion } from 'framer-motion'
 
-type Props = {
-    Title: React.ComponentType
-}
-
-const About = ({ Title }: Props) => {
+const About = () => {
     return (
         <div className="min-h-screen lg:h-screen w-full bg-gradient-to-br from-bgDark via-black to-bgDark text-secondary">
 
@@ -17,7 +13,7 @@ const About = ({ Title }: Props) => {
                     <div className="flex flex-col-reverse sm:flex-row justify-center items-center text-third gap-5">
                         <div className="flex flex-col gap-10">
 
-                            {/* <Title name="About me" sNo="01." /> */}
+                            <Title name="About me" sNo="01." />
 
                             <motion.p
                                 initial={{

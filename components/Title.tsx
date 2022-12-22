@@ -1,8 +1,8 @@
 import React from 'react'
 
 type Props = {
-    sNo: Number,
-    name: Number
+    sNo: string,
+    name: string
 }
 
 const Title = ({ sNo, name }: Props) => {

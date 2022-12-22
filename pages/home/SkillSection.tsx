@@ -2,6 +2,7 @@ import Image from 'next/image'
 import React from 'react'
 import { Skills } from '../../typings';
 import { urlFor } from '../../sanity';
+import Title from '../../components/Title';
 
 type Props = {
     skills: Skills[]
@@ -14,7 +15,7 @@ const SkillSection = ({ skills }: Props) => {
             <div className="max-w-screen-lg mx-auto flex flex-col justify-center w-full h-full px-2 pt-20 sm:pt-0 sm:px-4">
 
                 <div className='px-8 sm:px-0'>
-                    {/* <TitleBar name="I've worked on" sNo="03." /> */}
+                    <Title name="I've worked on" sNo="03." />
                 </div>
 
                 <div className="flex flex-wrap justify-center mt-10"
