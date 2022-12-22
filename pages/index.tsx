@@ -4,14 +4,16 @@ import { useEffect, useState } from 'react'
 import Loading from '../layouts/Loading'
 import Home from './Home'
 import { GetStaticProps } from 'next'
-import { Skills } from '../typings'
+import { Projects, Skills } from '../typings'
 import { fetchSkills } from '../utils/fetchSkills'
+import { fetchProjects } from '../utils/fetchProjects'
 
 type Props = {
   skills: Skills[]
+  projects: Projects[]
 }
 
-const IndexPage = ({ skills }: Props) => {
+const IndexPage = ({ skills, projects }: Props) => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
@@ -30,7 +32,7 @@ const IndexPage = ({ skills }: Props) => {
           </Head>
 
           <Header />
-          <Home skills={skills} />
+          <Home skills={skills} projects={projects} />
         </>
       }
     </>
@@ -41,10 +43,11 @@ export default IndexPage
 
 export const getStaticProps: GetStaticProps<Props> = async () => {
   const skills: Skills[] = await fetchSkills()
-
+  const projects: Projects[] = await fetchProjects()
   return {
     props: {
-      skills
+      skills,
+      projects
     },
     revalidate: 10
   }

@@ -19,3 +19,14 @@ export interface Skills extends SanityCommon {
     name: string;
     property: string;
 }
+
+export interface Projects extends SanityCommon {
+    _type: string;
+    title: string;
+    description: string;
+    github: string;
+    demo: string;
+    mobileImg: Image;
+    desktopImg: string;
+    tags: string[];
+}
