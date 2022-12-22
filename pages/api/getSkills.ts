@@ -4,7 +4,7 @@ import { Skills } from '../../typings'
 import { client } from '../../sanity'
 
 const query = groq`
-*[_type == "skills"]
+*[_type == "skills" && dateTime(_updatedAt) < dateTime(now())]
 `
 
 type Data = {
