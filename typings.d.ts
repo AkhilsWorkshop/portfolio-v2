@@ -1,20 +1,21 @@
 interface SanityCommon {
-    _createdAt: String;
-    _id: String;
-    _rev: String;
-    _updatedAt: String;
+    _createdAt: string;
+    _id: string;
+    _rev: string;
+    _updatedAt: string;
 }
 
 interface Image {
     _type: "image";
     asset: {
-        _ref: String;
+        _ref: string;
         _type: "reference";
     }
 }
 
 export interface Skills extends SanityCommon {
-    _type: String;
+    _type: string;
     image: Image;
-    name: String;
+    name: string;
+    property: string;
 }

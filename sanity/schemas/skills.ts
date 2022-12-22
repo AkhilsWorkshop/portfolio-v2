@@ -18,5 +18,10 @@ export default defineType({
                 hotspot: true,
             },
         }),
+        defineField({
+            name: 'property',
+            title: 'Property',
+            type: 'string',
+        }),
     ],
 })

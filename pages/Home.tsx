@@ -9,6 +9,7 @@ type Props = {
 }
 
 const Home = ({ skills }: Props) => {
+    console.log("home", skills)
     return (
         <>
             <section id='hero' className='snap-center'>

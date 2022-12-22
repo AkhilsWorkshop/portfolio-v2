@@ -30,7 +30,7 @@ const IndexPage = ({ skills }: Props) => {
           </Head>
 
           <Header />
-          <Home props={skills} />
+          <Home skills={skills} />
         </div>
       }
     </>
