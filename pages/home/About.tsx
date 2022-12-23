@@ -1,6 +1,8 @@
 import React from 'react'
 import Title from '../../components/Title'
 import { motion } from 'framer-motion'
+import profilePic from "../../assets/images/myImage.png"
+import Image from 'next/image'
 
 const About = () => {
     return (
@@ -31,7 +33,7 @@ const About = () => {
 
                         </div>
 
-                        {/* <Image src={profilePic} alt="My profile pic" className="w-2/4 md:w-1/4 rounded-full shadow-xl hover:sepia border-2 border-sixth md:rounded-md mx-auto mt-16 md:mt-0 duration-300"></img> */}
+                        <Image src={profilePic} alt="My profile pic" className="w-2/4 md:w-1/4 rounded-full shadow-xl hover:sepia border-2 border-sixth md:rounded-md mx-auto mt-16 md:mt-0 duration-300" />
 
                     </div>
 
