@@ -3,6 +3,7 @@ import Title from '../../components/Title'
 import { motion } from 'framer-motion'
 import profilePic from "../../assets/images/myImage.png"
 import Image from 'next/image'
+import Progress from '../../components/Progress'
 
 const About = () => {
     return (
@@ -37,7 +38,7 @@ const About = () => {
 
                     </div>
 
-                    {/* <Progress /> */}
+                    <Progress />
 
 
                 </div>
