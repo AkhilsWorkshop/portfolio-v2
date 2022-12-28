@@ -19,7 +19,7 @@ const Progress = (props: Props) => {
 
                         <div className="flex flex-col-reverse sm:flex-row items-center grow-0 shrink-0">
 
-                            <Image src={eachItem.image!} alt="AU logo" className={`z-10 w-10 aspect-square ${eachItem.imgClass}`} />
+                            <Image src={eachItem.image!} alt="AU logo" className={`z-10 w-10 aspect-square ${eachItem.imgClass!}`} />
 
                             <div className={`flex w-[1.5px] sm:w-full bg-gradient-to-b sm:bg-gradient-to-r h-full sm:h-[1.5px] ${eachItem.additionalClass}`}></div>
 

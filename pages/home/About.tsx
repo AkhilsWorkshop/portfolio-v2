@@ -28,13 +28,11 @@ const About = () => {
                                     duration: 0.5
                                 }}
                                 viewport={{ once: true }}
-                                className="sm:text-xl text-third font-slogan">
+                                className="sm:text-xl text-third font-slogan ">
                                 Hello! <span className="text-primary">I&apos;m Akhil</span>, and I enjoy leveraging the newest technologies to design and construct applications. I developed websites using Weebly and Wix during my school days, which sparked my interest in <span className="text-primary">web development</span>. I received my Undergraduate degree in Computer Science in 2021. I&apos;m now a student at The University of Texas at Arlington pursuing my Masters in Computer Science.
                             </motion.p>
 
                         </div>
-
-                        <Image src={profilePic} alt="My profile pic" className="w-2/4 md:w-1/4 rounded-full shadow-xl hover:sepia border-2 border-sixth md:rounded-md mx-auto mt-16 md:mt-0 duration-300" />
 
                     </div>
 

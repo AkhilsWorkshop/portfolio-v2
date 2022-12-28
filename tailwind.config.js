@@ -15,6 +15,7 @@ module.exports = {
       "sixth": "#112240",
       bgDark: "#082A3A",
       black: "black",
+      "orange": "#ffbc04",
     },
     extend: {},
   },

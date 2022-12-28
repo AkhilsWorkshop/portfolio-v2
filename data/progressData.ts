@@ -4,7 +4,7 @@ import codingLogo from "../assets/progressImg/codingLogo.png"
 import target from "../assets/progressImg/target.png"
 import { StaticImageData } from "next/image"
 
-export const progressData: { order?: string, image?: string | StaticImageData, title?: string, date?: string, shortDescription?: string, fullDescription?: string, additionalClass?: string, imgClass?: string }[] = [
+export const progressData: { order?: string, image?: string | StaticImageData, title?: string, date?: string, shortDescription?: string, fullDescription?: string, additionalClass: string, imgClass?: string }[] = [
     {
         order: "order-last sm:order-first",
         image: auLogo,
@@ -12,7 +12,7 @@ export const progressData: { order?: string, image?: string | StaticImageData, t
         date: "Sep 2017 - July 2021",
         shortDescription: "Bachelor of Engineering - Computer Science Engineering",
         fullDescription: "",
-        additionalClass: "from-third to-[#ffbc04]",
+        additionalClass: "from-fourth to-third",
         imgClass: "invert-[100%]",
     },
     {
@@ -38,6 +38,7 @@ export const progressData: { order?: string, image?: string | StaticImageData, t
     {
         order: "order-first sm:order-last",
         image: target,
+        additionalClass: "",
     },
 
 ]
