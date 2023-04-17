@@ -14,7 +14,7 @@ type Props = {
 }
 
 const IndexPage = ({ skills, projects }: Props) => {
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
 
   useEffect(() => {
     setTimeout(() => setLoading(false), 2000)
@@ -41,14 +41,14 @@ const IndexPage = ({ skills, projects }: Props) => {
 
 export default IndexPage
 
-export const getStaticProps: GetStaticProps<Props> = async () => {
-  const skills: Skills[] = await fetchSkills()
-  const projects: Projects[] = await fetchProjects()
-  return {
-    props: {
-      skills,
-      projects
-    },
-    revalidate: 10
-  }
-}
+// export const getStaticProps: GetStaticProps<Props> = async () => {
+//   const skills: Skills[] = await fetchSkills()
+//   const projects: Projects[] = await fetchProjects()
+//   return {
+//     props: {
+//       skills,
+//       projects
+//     },
+//     revalidate: 10
+//   }
+// }

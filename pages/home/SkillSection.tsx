@@ -1,14 +1,10 @@
 import Image from 'next/image'
 import React from 'react'
-import { Skills } from '../../typings';
-import { urlFor } from '../../sanity';
 import Title from '../../components/Title';
 
-type Props = {
-    skills: Skills[]
-}
 
-const SkillSection = ({ skills }: Props) => {
+
+const SkillSection = () => {
     return (
         <div className="h-auto sm:h-screen w-full bg-gradient-to-br from-bgDark via-black to-bgDark text-secondary">
 
@@ -22,12 +18,12 @@ const SkillSection = ({ skills }: Props) => {
                     data-aos="fade-up"
                     data-aos-delay="400"
                     data-aos-once="true">
-                    {skills?.map(({ _id, name, image, property }) => (
-                        <div key={_id} className="bg-gradient-to-br from-fifth via-bgDark to-fifth m-2 sm:m-3 p-4 w-16 h-20 sm:h-auto sm:w-24 rounded-md flex flex-col items-center justify-start gap-2 shadow-xl hover:scale-110 hover:shadow-[#000000] hover:shadow-2xl duration-300">
-                            <img src={urlFor(image).url()} alt={name} className={`${property}`} />
+                    {/* {skills?.map(({ _id, name, image, property }) => (
+                        <div key={_id} className="bg-gradient-to-br from-fifth via-bgDark to-fifth m-2 sm:m-3 p-4 w-16 h-20 sm:h-auto sm:w-20 rounded-md flex flex-col items-center justify-start gap-2 shadow-xl hover:scale-110 hover:shadow-[#000000] hover:shadow-2xl duration-300">
+                            <Image src={urlFor(image).url()} alt={name} className={`${property}`} width={100} height={100} />
                             <p className="text-[0.5rem] sm:text-sm text-center">{name}</p>
                         </div>
-                    ))}
+                    ))} */}
                 </div>
 
             </div>

@@ -36,7 +36,7 @@ const About = () => {
 
                     </div>
 
-                    <Progress />
+                    {/* <Progress /> */}
 
 
                 </div>

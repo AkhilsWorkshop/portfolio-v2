@@ -2,14 +2,10 @@ import React from 'react'
 import Title from '../../components/Title'
 import { FiGithub, FiExternalLink } from "react-icons/fi"
 import { FaTools } from "react-icons/fa"
-import { Projects } from '../../typings'
 import { urlFor } from '../../sanity'
 
-type Props = {
-    projects: Projects[]
-}
 
-const ProjectSection = ({ projects }: Props) => {
+const ProjectSection = () => {
     return (
         <div className="relative min-h-screen w-full bg-gradient-to-tr from-bgDark via-black to-bgDark text-secondary">
 
