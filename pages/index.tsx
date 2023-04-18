@@ -4,21 +4,31 @@ import { useEffect, useState } from 'react'
 import Loading from '../layouts/Loading'
 import Home from './Home'
 import { GetStaticProps } from 'next'
-import { Projects, Skills } from '../typings'
-import { fetchSkills } from '../utils/fetchSkills'
-import { fetchProjects } from '../utils/fetchProjects'
+import Airtable from 'airtable'
+import { fetchRecords } from '../utils/functions'
+import SkillSection from './home/SkillSection'
+import { Skills } from '../utils/interface'
 
-type Props = {
-  skills: Skills[]
-  projects: Projects[]
-}
+const IndexPage = () => {
 
-const IndexPage = ({ skills, projects }: Props) => {
+  const [skills, setSkills] = useState<Skills[]>([]);
   const [loading, setLoading] = useState(false)
 
+  const fetchSkills = async () => {
+    try {
+      const data = await fetchRecords('Skills');
+      if (data)
+        setSkills(data);
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   useEffect(() => {
+
+    fetchSkills()
     setTimeout(() => setLoading(false), 2000)
-  })
+  }, [])
   return (
     <>
       {loading ?
@@ -32,7 +42,8 @@ const IndexPage = ({ skills, projects }: Props) => {
           </Head>
 
           <Header />
-          <Home skills={skills} projects={projects} />
+          <Home />
+          <SkillSection skills={skills} />
         </>
       }
     </>

@@ -3,12 +3,8 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   images: {
-    remotePatterns: [
-      {
-        protocol: 'https',
-        hostname: 'cdn.sanity.io',
-      },
-    ],
+    dangerouslyAllowSVG: true,
+    domains: ['v5.airtableusercontent.com'],
   },
 }
 

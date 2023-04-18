@@ -18,6 +18,9 @@ module.exports = {
       "orange": "#ffbc04",
     },
     extend: {},
+    fontFamily: {
+      slogan: ["Ubuntu"],
+    }
   },
   plugins: [],
 }

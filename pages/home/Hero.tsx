@@ -1,13 +1,14 @@
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import React from 'react'
 import { BsChevronDown, BsDownload } from "react-icons/bs"
 import { FiExternalLink } from "react-icons/fi"
+import { Link, animateScroll as scroll } from "react-scroll";
 
 const Hero = () => {
 
     return (
-        <div className="h-screen w-full bg-gradient-to-tr from-bgDark via-black to-black">
+        <div className="h-screen w-full bg-gradient-to-tr from-bgDark via-black to-black animate-gradient">
+
 
             <div className="max-w-screen-lg mx-auto flex items-center justify-center h-full px-10 sm:py-0 sm:px-4">
 
@@ -109,7 +110,26 @@ const Hero = () => {
                         </a>
                     </motion.div>
 
-                    <Link href="#about" scroll={true} >
+                    {/* <Link href="#about" scroll={false} >
+                        <motion.div
+                            className="flex justify-center"
+                            initial={{ opacity: 0, y: 100 }} // Set initial position and opacity
+                            animate={{ opacity: 1, y: 0 }} // Set final position and opacity
+                            transition={{ duration: 0.5, delay: 0.7 }} // Set duration of animation
+                        >
+
+                            <BsChevronDown className="text-primary p-2 mt-5 sm:mt-10 rounded-full hover:bg-primary/20 duration-300 cursor-pointer" size={50} />
+                        </motion.div>
+                    </Link> */}
+                    <Link activeClass="active"
+                        to="about"
+                        spy={true}
+                        smooth={true}
+                        hashSpy={true}
+                        offset={-100}
+                        duration={500}
+                        isDynamic={true}
+                    >
                         <motion.div
                             className="flex justify-center"
                             initial={{ opacity: 0, y: 100 }} // Set initial position and opacity

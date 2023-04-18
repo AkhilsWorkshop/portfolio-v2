@@ -2,7 +2,6 @@ import React from 'react'
 import Title from '../../components/Title'
 import { FiGithub, FiExternalLink } from "react-icons/fi"
 import { FaTools } from "react-icons/fa"
-import { urlFor } from '../../sanity'
 
 
 const ProjectSection = () => {

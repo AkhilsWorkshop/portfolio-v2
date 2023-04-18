@@ -5,7 +5,6 @@ import SkillSection from './home/SkillSection'
 import ProjectSection from './home/ProjectSection'
 
 
-
 const Home = () => {
 
     return (
