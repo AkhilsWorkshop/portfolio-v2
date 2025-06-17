@@ -1,29 +1,32 @@
 "use client"
 
-import Loading from "@/layouts/Loading"
 import HeroV2 from "./HeroV2"
 import { useEffect, useState } from "react"
 import Skills from "./Skills"
+import AboutV2 from "./AboutV2"
 
 const Layout = () => {
 
-    // const [load, setLoad] = useState(false)
+    const [showFullContent, setShowFullContent] = useState(false)
 
-    // useEffect(() => {
-    //     setLoad(true)
-    //     setTimeout(() => { setLoad(false) }, 2000)
-    // }, [])
+    useEffect(() => {
+
+        const timer = setTimeout(() => {
+            setShowFullContent(true)
+        }, 1500)
+
+        return () => clearTimeout(timer)
+    }, [])
 
     return (
-        // load ?
-
-        //     <Loading />
-
-        //     :
-
         <>
             <HeroV2 />
-            <Skills />
+            {showFullContent && (
+                <>
+                    <AboutV2 />
+                    <Skills />
+                </>
+            )}
         </>
     )
 }

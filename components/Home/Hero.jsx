@@ -1,6 +1,6 @@
 import { FiExternalLink } from "react-icons/fi"
 import { BsChevronDown, BsDownload } from "react-icons/bs"
-import { LinkPreview } from "../Reuse/LinkPreview"
+import { LinkPreview } from "../Effects/LinkPreview"
 import { HeaderBG } from "../Reuse/HeaderBG"
 import { HeaderBG2 } from "../Reuse/HeaderBG2"
 import { WavyBG } from "../Reuse/WavyBG"

@@ -65,14 +65,7 @@ const HeroV2 = () => {
 
                         <motion.div
                             className="fixed z-50"
-                            initial={{
-                                top: window?.scrollY > 50 ? "20px" : "50%",
-                                left: window?.scrollY > 50 ? "20px" : "50%",
-                                x: window?.scrollY > 50 ? 0 : "-50%",
-                                y: window?.scrollY > 50 ? 0 : "-50%",
-                                width: window?.scrollY > 50 ? 64 : 256,
-                                height: window?.scrollY > 50 ? 64 : 256
-                            }}
+                            initial={false}
                             animate={{
                                 width: scrolled ? 64 : (showOverlay ? 256 : 128),
                                 height: scrolled ? 64 : (showOverlay ? 256 : 128),
@@ -83,9 +76,7 @@ const HeroV2 = () => {
                             }}
                             transition={{ duration: 0.5, ease: "easeInOut" }}
                         >
-                            <ImageSaveWrapper
-                                customCSS="hover:opacity-80 transition-opacity cursor-pointer"
-                            >
+                            <ImageSaveWrapper>
                                 <Image
                                     src="/assets/images/layouts/logo.svg"
                                     alt="AK Logo"
