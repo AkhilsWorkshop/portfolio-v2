@@ -1,9 +1,10 @@
 "use client"
 
-import HeroV2 from "./HeroV2"
+import Hero from "./Hero"
 import { useEffect, useState } from "react"
 import Skills from "./Skills"
-import AboutV2 from "./AboutV2"
+import About from "./About"
+import Experience from "./Experience"
 
 const Layout = () => {
 
@@ -20,11 +21,11 @@ const Layout = () => {
 
     return (
         <>
-            <HeroV2 />
+            <Hero />
             {showFullContent && (
                 <>
-                    <AboutV2 />
-                    <Skills />
+                    <About />
+                    <Experience />
                 </>
             )}
         </>

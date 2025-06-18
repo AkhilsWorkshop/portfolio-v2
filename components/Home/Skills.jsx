@@ -1,6 +1,5 @@
 
 import { v4 as uuidv4 } from 'uuid';
-import TitleBar from '../../components/Common/TitleBar';
 import { list } from '../../data/skills';
 
 const Skills = () => {
@@ -9,10 +8,6 @@ const Skills = () => {
         <div name="Skills" className="h-auto sm:h-screen w-full bg-gradient-to-br from-bgDark via-black to-bgDark text-secondary">
 
             <div className="max-w-screen-lg mx-auto flex flex-col justify-center w-full h-full px-2 pt-20 sm:pt-0 sm:px-4">
-
-                <div className='px-8 sm:px-0'>
-                    <TitleBar name="I've worked on" sNo="03." />
-                </div>
 
                 <div className="flex flex-wrap justify-center mt-10"
                     data-aos="fade-up"

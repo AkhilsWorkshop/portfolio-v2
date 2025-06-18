@@ -1,41 +1,130 @@
-// import profilePic from "../../assets/Images/Home/About/myImage.png"
-import Progress from "../../components/Home/About/Progress";
-import TitleBar from "../../components/Common/TitleBar";
+import React, { memo, useEffect, useRef, useState } from 'react'
+import { LinkPreview } from '../Effects/LinkPreview'
+import { motion } from 'motion/react'
 
 const About = () => {
 
-    return (
-        <div name="About" className="min-h-screen lg:h-screen w-full bg-gradient-to-br from-bgDark via-black to-bgDark text-secondary">
+    const [particles, setParticles] = useState([])
 
-            <div className="max-w-screen-lg mx-auto flex flex-col items-center justify-center h-full px-10 sm:px-4 md:flex-row">
+    const containerRef = useRef(null)
 
-                <div className="flex flex-col justify-center h-full sm:gap-10">
+    useEffect(() => {
+        const newParticles = Array.from({ length: 50 }, (_, i) => ({
+            id: i,
+            x: Math.random() * window.innerWidth,
+            y: Math.random() * window.innerHeight,
+            size: Math.random() * 4 + 1,
+            opacity: Math.random() * 0.5 + 0.1, speed: Math.random() * 2 + 0.5,
+        }));
+        setParticles(newParticles);
+    }, []);
 
-                    <div className="flex flex-col-reverse sm:flex-row justify-center items-center text-third gap-5">
-                        <div className="flex flex-col gap-10">
+    return (<div
+        ref={containerRef}
+        className='h-full sm:h-[100dvh] w-full relative overflow-hidden bg-black'>
 
-                            <TitleBar name="About me" sNo="01." />
+        {particles.map((particle) => (
+            <motion.div
+                key={particle.id}
+                className="absolute w-1 h-1 bg-[#082A3A] rounded-full"
+                initial={{
+                    x: particle.x,
+                    y: particle.y,
+                    opacity: particle.opacity,
+                }}
+                animate={{
+                    y: [particle.y, particle.y - 100, particle.y],
+                    opacity: [particle.opacity, particle.opacity * 2, particle.opacity],
+                }}
+                transition={{
+                    duration: particle.speed * 4,
+                    repeat: Number.POSITIVE_INFINITY,
+                    ease: "easeInOut",
+                }}
+                style={{
+                    width: particle.size,
+                    height: particle.size,
+                }}
+            />
+        ))}
 
-                            <p className="sm:text-xl text-third font-slogan"
-                                data-aos="fade-up"
-                                data-aos-once="true"
-                                data-aos-delay="200">
-                                Hello! <span className="text-primary">I'm Akhil</span>, and I enjoy leveraging the newest technologies to design and construct applications. I developed websites using Weebly and Wix during my school days, which sparked my interest in <span className="text-primary">web development</span>. I received my Undergraduate degree in Computer Science in 2021. I'm now a student at The University of Texas at Arlington pursuing my Masters in Computer Science.
-                            </p>
+        <div className="max-w-screen-lg m-auto flex flex-col items-center justify-center h-full p-10 px-6">
 
-                        </div>
+            <div className='flex flex-col items-center justify-center gap-8 h-auto z-40 text-third'>
 
-                        {/* <img src={profilePic} alt="My profile pic" className="w-2/4 md:w-1/4 rounded-full shadow-xl hover:sepia border-2 border-sixth md:rounded-md mx-auto mt-16 md:mt-0 duration-300"></img> */}
+                <div className="">
 
-                    </div>
-
-                    <Progress />
-
+                    <span>I'm Akhil Harikumar, a full-stack software developer with a passion for building clean, performant, and user-focused applications. I enjoy working across the stack—bringing together beautiful front-end interfaces with robust backend systems—and I love blending technical precision with thoughtful design.{" "}</span>
 
                 </div>
+
+                <div className="">
+
+                    <span>
+                        Currently, I'm a Software Engineer at{" "}
+                    </span>
+                    <LinkPreview
+                        url="https://artistportal.gye.band/artistportal/login"
+                        urlName="Groovin' You Entertainment" />
+                    <span>, where I help develop and maintain a portal for musicians to manage their gigs. From venues & itineraries to setlists & repertoire management, I work on creating tools that streamline every aspect of a musician's workflow. Whether it's crafting seamless UI experiences or architecting backend features, I care deeply about building software that's both functional and enjoyable to use.
+                    </span>
+                </div>
+
+                <div className="">
+
+                    <span>
+                        I completed my Master's in Computer Science at{" "}
+                    </span>
+                    <LinkPreview
+                        url="https://www.uta.edu/"
+                        urlName="The University of Texas at Arlington" />
+                    <span>, where I deepened my understanding of modern software systems. Some of the courses I took include Cloud Computing, Python Programming, Software Engineering, Database Systems, and Web Data Management—each of which shaped my approach to building scalable, maintainable, and efficient software.
+                    </span>
+                </div>
+
             </div>
+
         </div>
+
+        <motion.div
+            className="absolute top-1/4 left-1/4 w-96 h-64 bg-green-500 rounded-full opacity-10 blur-3xl"
+            animate={{
+                scale: [1, 1.2, 1],
+                rotate: [0, 180, 360],
+            }}
+            transition={{
+                duration: 20,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+            }}
+        />
+        <motion.div
+            className="absolute top-1/4 left-1/4 w-96 h-64 bg-white/50 rounded-full opacity-10 blur-3xl"
+            animate={{
+                scale: [1, 1.2, 1],
+                rotate: [0, 180, 360],
+            }}
+            transition={{
+                duration: 20,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+            }}
+        />
+        <motion.div
+            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-orange-500 rounded-full opacity-10 blur-3xl"
+            animate={{
+                scale: [1.2, 1, 1.2],
+                rotate: [360, 180, 0],
+            }}
+            transition={{
+                duration: 25,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+            }}
+        />
+
+    </div>
     )
 }
 
-export default About
+export default memo(About)

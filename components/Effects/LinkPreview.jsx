@@ -114,7 +114,7 @@ export const LinkPreview = ({
                                         href={url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="relative block group overflow-hidden rounded-md border border-primary/50 cursor-none">
+                                        className="relative block group overflow-hidden rounded-md border border-primary/50">
                                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md z-10">
                                             <span className="text-white/60 text-sm inline-flex gap-2 justify-center items-center">View <FaExternalLinkAlt size={15} /></span>
                                         </div>

@@ -3,7 +3,7 @@
 import { cn } from "@/lib/utils";
 import React, { useEffect, useRef, useState } from "react";
 import { createNoise3D } from "simplex-noise";
-import ImageSaveWrapper from "./Image/ImageSaveWrapper";
+import ImageSaveWrapper from "../Reuse/Image/ImageSaveWrapper";
 
 export const WavyBG = ({
     children,
