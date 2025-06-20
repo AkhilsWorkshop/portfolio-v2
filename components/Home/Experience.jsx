@@ -2,6 +2,7 @@ import React, { memo, useEffect, useRef, useState } from "react"
 import { progressData } from "@/data/ProgressData"
 import { motion, useScroll, useTransform } from "motion/react"
 import ProgressBar from "../Effects/ProgressBar"
+import { GoLink, GoUnlink } from "react-icons/go"
 
 const Experience = () => {
 
@@ -35,39 +36,80 @@ const Experience = () => {
         .filter(item => item.title)
         .reverse()
         .map((item, index) => {
-            return ({
-                content: (
-                    <motion.div
-                        className="flex flex-col gap-6"
-                        initial={{ opacity: 0, y: 50 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                        viewport={{ once: true }} >
+            return (
+                <motion.div
+                    className="flex flex-col gap-6 relative h-full p-2"
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    viewport={{ once: true }} >
 
-                        <div className="flex flex-col items-start">
-                            <h4 className="text-lg font-semibold text-gray-200">{item.title}</h4>
-                            <p className="text-sm text-gray-400 font-medium">{item.date}</p>
+                    <div className="flex flex-col items-start">
+                        <h4 className="text-lg font-semibold text-gray-200">{item.title}</h4>
+                        <p className="text-sm text-gray-500 font-medium uppercase">{item.date}</p>
+                    </div>
+
+                    <p className="text-base text-gray-400 leading-relaxed">
+                        {item.shortDescription}
+                    </p>
+
+                    {item.fullDescription && (
+                        <p className="text-[15px] text-gray-500 leading-5">
+                            {item.fullDescription}
+                        </p>
+                    )}
+
+                    {item?.links?.length > 0 && (
+
+                        <div className="flex flex-wrap gap-3 text-sm text-gray-400">
+
+                            {item.links.map((link, linkIndex) => (
+
+                                link.url ?
+
+                                    <a
+                                        key={linkIndex}
+                                        href={link.url}
+                                        className="text-gray-400 hover:text-primary/80 underline underline-offset-4 transition-colors duration-200 inline-flex items-center gap-1"
+                                        target="_blank"
+                                        rel="noopener noreferrer">
+                                        <GoLink size={12} /> {link.label}
+                                    </a>
+
+                                    :
+
+                                    <p
+                                        key={linkIndex}
+                                        className="text-gray-400 underline underline-offset-4 inline-flex items-center gap-1">
+                                        <GoUnlink size={12} /> {link.label}
+                                    </p>
+                            ))}
+
                         </div>
 
-                        <p className="text-sm md:text-base text-gray-400 leading-relaxed">
-                            {item.shortDescription}
-                        </p>
+                    )}
 
-                        {item.fullDescription && (
-                            <p className="text-sm md:text-base text-gray-500 leading-relaxed">
-                                {item.fullDescription}
-                            </p>
-                        )}
+                    {item?.tech?.length > 0 && (
 
-                    </motion.div>
-                ),
-            })
+                        <div className="flex flex-wrap gap-2 text-sm text-gray-400">
+                            {item.tech.map((tech, index) => (
+                                <p
+                                    key={index}
+                                    className="rounded-md px-2 py-1 text-xs bg-[#0a302c] text-[#5ce3cc]  transition-colors duration-200 inline-flex items-center gap-1">{tech}
+                                </p>
+                            ))}
+                        </div>
+
+                    )}
+
+                </motion.div>
+            )
         })
 
     return (
         <div
             ref={containerRef}
-            className="relative w-full overflow-hidden bg-black font-['Orbitron',_'Exo_2',_monospace]">
+            className="relative w-full overflow-hidden bg-black pb-32">
 
             <motion.div
                 className="absolute inset-0 z-0"

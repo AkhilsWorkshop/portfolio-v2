@@ -2,32 +2,35 @@
 
 import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 
-import { encode } from "qss";
-import React from "react";
+import { encode } from "qss"
+import React, { useEffect, useState } from "react"
 import {
     AnimatePresence,
     motion,
     useMotionValue,
     useSpring,
-} from "motion/react";
+} from "motion/react"
 
-import { cn } from "@/lib/utils";
-import Image from "next/image";
-import { FaExternalLinkAlt } from "react-icons/fa";
+import { cn } from "@/lib/utils"
+import Image from "next/image"
+import { FaExternalLinkAlt } from "react-icons/fa"
 
 export const LinkPreview = ({
     urlName,
     url,
+    previewURL,
     className,
     width = 300,
     height = 200,
     isStatic = false,
     imageSrc = ""
 }) => {
-    let src;
+
+    let src
+
     if (!isStatic) {
         const params = encode({
-            url,
+            url: previewURL || url,
             screenshot: true,
             meta: false,
             embed: "screenshot.url",
@@ -35,31 +38,31 @@ export const LinkPreview = ({
             "viewport.deviceScaleFactor": 1,
             "viewport.width": 1920,
             "viewport.height": 1080,
-        });
-        src = `https://api.microlink.io/?${params}`;
+        })
+        src = `https://api.microlink.io/?${params}`
     } else {
-        src = imageSrc;
+        src = imageSrc
     }
 
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false)
 
-    const [isMounted, setIsMounted] = React.useState(false);
+    const [isMounted, setIsMounted] = useState(false)
 
-    React.useEffect(() => {
-        setIsMounted(true);
-    }, []);
+    const springConfig = { stiffness: 100, damping: 15 }
+    const x = useMotionValue(0)
 
-    const springConfig = { stiffness: 100, damping: 15 };
-    const x = useMotionValue(0);
-
-    const translateX = useSpring(x, springConfig);
+    const translateX = useSpring(x, springConfig)
 
     const handleMouseMove = (event) => {
-        const targetRect = event.target.getBoundingClientRect();
-        const eventOffsetX = event.clientX - targetRect.left;
+        const targetRect = event.target.getBoundingClientRect()
+        const eventOffsetX = event.clientX - targetRect.left
         const offsetFromCenter = (eventOffsetX - targetRect.width / 2) / 2
-        x.set(offsetFromCenter);
-    };
+        x.set(offsetFromCenter)
+    }
+
+    useEffect(() => {
+        setIsMounted(true)
+    }, [])
 
     return (
         <>
@@ -68,6 +71,7 @@ export const LinkPreview = ({
                     <img src={src} width={width} height={height} alt="hidden image" />
                 </div>
             ) : null}
+
             <HoverCardPrimitive.Root
                 openDelay={50}
                 closeDelay={100}
@@ -134,5 +138,5 @@ export const LinkPreview = ({
                 </HoverCardPrimitive.Content>
             </HoverCardPrimitive.Root>
         </>
-    );
-};
+    )
+}

@@ -26,6 +26,7 @@ const Layout = () => {
                 <>
                     <About />
                     <Experience />
+                    <Skills />
                 </>
             )}
         </>

@@ -1,6 +1,8 @@
 "use client"
+
 import { useScroll, useTransform, motion } from "motion/react"
 import React, { memo, useEffect, useRef, useState } from "react"
+import CardGlow from "./CardGlow"
 
 const ProgressBar = ({ data }) => {
 
@@ -9,6 +11,8 @@ const ProgressBar = ({ data }) => {
 
     const [height, setHeight] = useState(0)
     const [maxProgress, setMaxProgress] = useState(0)
+    const [showResumeButton, setShowResumeButton] = useState(false)
+    const [animateResumeButton, setAnimateResumeButton] = useState(false)
 
     useEffect(() => {
 
@@ -27,11 +31,18 @@ const ProgressBar = ({ data }) => {
     useEffect(() => {
         const unsubscribe = scrollYProgress.on("change", (latest) => {
             setMaxProgress(prev => Math.max(prev, latest))
+
+            if (latest > 0.95 && !showResumeButton) {
+                setShowResumeButton(true)
+
+                setTimeout(() => {
+                    setAnimateResumeButton(true)
+                }, 300)
+            }
         })
         return unsubscribe
-    }, [scrollYProgress])
+    }, [scrollYProgress, showResumeButton])
 
-    const headerY = useTransform(scrollYProgress, [0, 1], [0, -50])
     const heightTransform = useTransform(() => maxProgress * height)
     const opacityTransform = useTransform(() => maxProgress >= 0.1 ? 1 : maxProgress * 10)
 
@@ -70,26 +81,35 @@ const ProgressBar = ({ data }) => {
                             }} viewport={{ once: true, margin: "-40% 0px -40% 0px" }}
                         >
                             <div className="hidden md:flex w-full items-center">
+
                                 {isLeft ? (
                                     <>
                                         <div className="w-5/12 pr-8">
+
                                             <motion.div
-                                                className="relative p-6 rounded-xl bg-gradient-to-br from-gray-900/20 to-gray-950/20 border border-gray-800/30 backdrop-blur-sm shadow-xl overflow-hidden"
-                                                whileHover={{ scale: 1.02, y: -5 }}
+                                                className="relative p-6 rounded-xl bg-gradient-to-br from-gray-900/20 to-gray-950/20 border-2 border-gray-800/30 backdrop-blur-sm shadow-xl"
                                                 transition={{
                                                     duration: 0.3
                                                 }}
                                             >
+
+                                                <CardGlow
+                                                    spread={40}
+                                                    glow={true}
+                                                    disabled={false}
+                                                    proximity={64}
+                                                    inactiveZone={0.01}
+                                                    borderWidth={2}
+                                                />
+
                                                 <div className="absolute inset-0 opacity-10">
                                                     <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:40px_40px]" />
                                                 </div>
 
                                                 <div className="relative z-10">
-                                                    <h3 className="text-2xl font-bold mb-2 text-gray-200">
-                                                        {item.title}
-                                                    </h3>
-                                                    {item.content}
+                                                    {item}
                                                 </div>
+
                                             </motion.div>
                                         </div>
 
@@ -137,23 +157,31 @@ const ProgressBar = ({ data }) => {
                                     </div>
 
                                     <div className="w-5/12 pl-8">
+
                                         <motion.div
-                                            className="relative p-6 rounded-xl bg-gradient-to-br from-gray-900/20 to-gray-950/20 border border-gray-800/30 backdrop-blur-sm shadow-xl overflow-hidden"
-                                            whileHover={{ scale: 1.02, y: -5 }}
+                                            className="relative p-6 rounded-xl bg-gradient-to-br from-gray-900/20 to-gray-950/20 border border-gray-800/30 backdrop-blur-sm shadow-xl"
                                             transition={{
                                                 duration: 0.3
                                             }}
                                         >
+
+                                            <CardGlow
+                                                spread={40}
+                                                glow={true}
+                                                disabled={false}
+                                                proximity={64}
+                                                inactiveZone={0.01}
+                                                borderWidth={2}
+                                            />
+
                                             <div className="absolute inset-0 opacity-10">
                                                 <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:40px_40px]" />
                                             </div>
 
                                             <div className="relative z-10">
-                                                <h3 className="text-2xl font-bold mb-2 text-gray-200">
-                                                    {item.title}
-                                                </h3>
-                                                {item.content}
+                                                {item}
                                             </div>
+
                                         </motion.div>
                                     </div>
                                 </>
@@ -182,22 +210,21 @@ const ProgressBar = ({ data }) => {
                                         </motion.div>
                                     </div>
                                     <div className="flex-1 min-w-0">
+
                                         <motion.div
                                             className="relative p-4 rounded-lg bg-gradient-to-br from-gray-900/20 to-gray-950/20 border border-gray-800/30 shadow-lg overflow-hidden"
-                                            whileHover={{ scale: 1.01 }}
                                             transition={{
                                                 duration: 0.3
-                                            }}                                >
+                                            }}>
+
                                             <div className="absolute inset-0 opacity-10">
                                                 <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:30px_30px]" />
                                             </div>
 
                                             <div className="relative z-10">
-                                                <h3 className="text-lg font-bold mb-2 text-gray-200">
-                                                    {item.title}
-                                                </h3>
-                                                {item.content}
+                                                {item}
                                             </div>
+
                                         </motion.div>
                                     </div>
                                 </div>
@@ -380,6 +407,73 @@ const ProgressBar = ({ data }) => {
                             />
                         )
                     })}
+                </div>
+
+                <div className="hidden md:block pb-12">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={showResumeButton ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        className="absolute left-1/2 transform -translate-x-1/2 bottom-0 z-50"
+                    >
+                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="relative inline-block">
+                            <div className="relative overflow-hidden px-8 py-3 rounded-lg font-medium text-white border-2 border-primary/60 bg-black/40 backdrop-blur-sm shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:shadow-lg">
+                                <motion.div
+                                    initial={{ width: "0%" }}
+                                    animate={animateResumeButton ? { width: "100%" } : { width: "0%" }}
+                                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                                    className="absolute inset-0 bg-gradient-to-r from-primary/30 to-primary/10 pointer-events-none"
+                                />
+                                <div className="relative z-10">View My Resume</div>
+
+                                <div className="absolute inset-0 opacity-20">
+                                    <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:20px_20px]" />
+                                </div>
+                            </div>
+                        </a>
+                    </motion.div>
+                </div>
+
+                <div className="md:hidden">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={showResumeButton ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+                        transition={{ duration: 0.4, ease: "easeOut" }}
+                        className="absolute left-1/2 transform -translate-x-1/2 top-1/2 z-50"
+                    >
+                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="relative inline-block">
+                            <div className="relative overflow-hidden px-6 py-2 rounded-lg font-medium text-white border-2 border-primary/60 bg-black/40 backdrop-blur-sm shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:shadow-lg">
+                                <motion.div
+                                    initial={{ width: "0%" }}
+                                    animate={animateResumeButton ? { width: "100%" } : { width: "0%" }}
+                                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                                    className="absolute inset-0 bg-gradient-to-r from-primary/30 to-primary/10 pointer-events-none"
+                                />
+                                <div className="relative z-10">View Resume</div>
+
+                                <div className="absolute inset-0 opacity-20">
+                                    <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:16px_16px]" />
+                                </div>
+                            </div>
+                        </a>
+                    </motion.div>
+
+                    {showResumeButton && (
+                        <motion.div
+                            initial={{ width: 0 }}
+                            animate={{ width: '50%' }}
+                            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
+                            style={{
+                                position: 'absolute',
+                                left: '8px',
+                                top: '50%',
+                                height: '2px',
+                                background: 'linear-gradient(90deg, rgba(171,223,18,1) 0%, rgba(171,223,18,0.7) 70%, rgba(171,223,18,0.5) 100%)',
+                                boxShadow: "0 0 8px rgba(171,223,18,0.6), 0 0 16px rgba(171,223,18,0.4)",
+                                zIndex: 40
+                            }}
+                        />
+                    )}
                 </div>
             </div>
         </div>

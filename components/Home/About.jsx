@@ -64,7 +64,8 @@ const About = () => {
                         Currently, I'm a Software Engineer at{" "}
                     </span>
                     <LinkPreview
-                        url="https://artistportal.gye.band/artistportal/login"
+                        url="https://gye.band/artistportal"
+                        previewURL="https://artistportal.gye.band/artistportal/login"
                         urlName="Groovin' You Entertainment" />
                     <span>, where I help develop and maintain a portal for musicians to manage their gigs. From venues & itineraries to setlists & repertoire management, I work on creating tools that streamline every aspect of a musician's workflow. Whether it's crafting seamless UI experiences or architecting backend features, I care deeply about building software that's both functional and enjoyable to use.
                     </span>

@@ -1,40 +1,76 @@
 export const progressData = [
     {
-        order: "order-last sm:order-first",
-        image: "/assets/images/layouts/logo.svg", // Using existing logo as placeholder
         title: "Anna University",
         date: "Sep 2017 - July 2021",
         shortDescription: "Bachelor of Engineering - Computer Science Engineering",
-        fullDescription: "Completed my undergraduate degree in Computer Science Engineering with a focus on software development, algorithms, and data structures.",
-        additionalClass: "from-third to-[#ffbc04]",
-        imgClass: "invert-[100%]",
-        delay: 300,
+        fullDescription: "I did my Bachelor's in Computer Science, where I gained a strong foundation in data structures, web development, and cloud computing. The coursework equipped me with essential programming concepts and practical skills for building scalable applications.",
+        tech: [
+            "Python",
+            "JavaScript",
+            "HTML",
+            "CSS",
+            'C Programming',
+        ]
     },
     {
-        order: "order-3 sm:order-2",
-        image: "/assets/images/layouts/logo.svg", // Using existing logo as placeholder
-        title: "Full Stack Developer (Freelance)",
+        title: "Freelance",
         date: "Jan 2018 - Aug 2021",
-        shortDescription: "Built Dynamic web applications using ReactJS, JavaScript, Bootstrap for local business",
+        shortDescription: "Full Stack Developer",
         fullDescription: "Developed custom web solutions for small businesses, focusing on responsive design and user experience. Gained hands-on experience with modern web technologies and client management.",
-        additionalClass: "from-[#ffbc04] to-primary",
-        imgClass: "",
-        delay: 400,
+        tech: [
+            "JavaScript",
+            "React",
+            "Tailwind CSS",
+            "Github"
+        ]
     },
     {
-        order: "order-2 sm:order-3",
-        image: "/assets/images/layouts/logo.svg", // Using existing logo as placeholder
         title: "University of Texas at Arlington",
         date: "Aug 2021 - May 2023",
         shortDescription: "Master of Science - Computer Science",
-        fullDescription: "Advanced studies in computer science with specialization in software engineering, machine learning, and distributed systems. Completed with distinction.",
-        additionalClass: "from-primary to-[#00ff0d]",
-        imgClass: "",
-        delay: 500,
+        fullDescription: "I did my Master's in Computer Science with a focus on Cloud Computing and Database Systems. Studied Web Management, Python, and Algorithms, building a strong technical foundation for my development work.",
+        tech: [
+            "Python",
+            "JavaScript",
+            "React",
+            "HTML",
+            "CSS",
+            "Java",
+            "Github"
+        ]
     },
     {
-        order: "order-first sm:order-last",
-        image: "/assets/images/layouts/logo.svg",
+        title: "Groovin' You Entertainment, LTD",
+        date: "May 2023 - Present",
+        shortDescription: "Software Engineer",
+        fullDescription: "I developed and maintain the Artist Portal, allowing musicians to manage gigs, view job details, generate setlists, and match repertoire with client preferences. Band leaders can assign vocalists, report issues, and complete performance logs. I also built the Admin Portal for management to view job and artist data. Additionally, I created the Client Website to showcase bands, their services, media, and reviews on dedicated pages.",
+        links: [
+            {
+                label: "Artist Portal",
+                url: "https://gye.band/artistportal",
+                previewURL: "https://artistportal.gye.band/artistportal/login"
+            },
+            {
+                label: "Customer Website",
+                url: "https://www.gye.band/"
+            },
+            {
+                label: "Admin Portal"
+            }
+        ],
+        tech: [
+            "JavaScript",
+            "React",
+            "Next.js",
+            "Vercel",
+            "Github",
+            "Tailwind CSS",
+            "Firebase",
+            "Airtable",
+            "Google Cloud Platform",
+            "Sentry",
+            "Make"
+        ]
     },
 
 ]
