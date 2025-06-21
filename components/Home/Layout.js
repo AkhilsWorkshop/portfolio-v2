@@ -5,27 +5,31 @@ import { useEffect, useState } from "react"
 import Skills from "./Skills"
 import About from "./About"
 import Experience from "./Experience"
+import SkillsV2 from "./SkillsV2"
 
 const Layout = () => {
 
-    const [showFullContent, setShowFullContent] = useState(false)
+    const [showFullContent, setShowFullContent] = useState(true)
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const timer = setTimeout(() => {
-            setShowFullContent(true)
-        }, 1500)
+    //     const timer = setTimeout(() => {
+    //         setShowFullContent(true)
+    //     }, 1500)
 
-        return () => clearTimeout(timer)
-    }, [])
+    //     return () => clearTimeout(timer)
+    // }, [])
 
     return (
         <>
-            <Hero />
+            {/* <Hero /> */}
             {showFullContent && (
                 <>
                     <About />
                     <Experience />
+
+                    <SkillsV2 />
+
                     <Skills />
                 </>
             )}

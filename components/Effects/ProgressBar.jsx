@@ -49,10 +49,10 @@ const ProgressBar = ({ data }) => {
     return (
 
         <div
-            className="w-full bg-transparent font-sans md:px-10"
+            className="w-full bg-transparent"
             ref={containerRef}>
 
-            <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+            <div ref={ref} className="relative max-w-7xl mx-auto md:pb-20">
 
                 {data.map((item, index) => {
 
@@ -409,73 +409,45 @@ const ProgressBar = ({ data }) => {
                     })}
                 </div>
 
-                <div className="hidden md:block pb-12">
+                <div className="block pb-12">
+
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={showResumeButton ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                         transition={{ duration: 0.4, ease: "easeOut" }}
-                        className="absolute left-1/2 transform -translate-x-1/2 bottom-0 z-50"
+                        className="absolute left-1/2 transform -translate-x-1/2 -bottom-10 z-50 w-full md:w-auto px-4"
                     >
-                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="relative inline-block">
-                            <div className="relative overflow-hidden px-8 py-3 rounded-lg font-medium text-white border-2 border-primary/60 bg-black/40 backdrop-blur-sm shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:shadow-lg">
+                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="relative inline-block w-full">
+
+                            <div className="relative overflow-hidden px-8 py-3 rounded-lg font-medium text-white border-2 border-primary/60 bg-black/40 backdrop-blur-sm shadow-lg transition-all duration-300 group">
+
+                                <motion.div
+                                    initial={{ height: "0%" }}
+                                    animate={animateResumeButton ? { height: "100%" } : { height: "0%" }}
+                                    transition={{ duration: 0.8, ease: "easeInOut" }}
+                                    className="absolute inset-0 bg-gradient-to-r md:bg-gradient-to-t from-[#5ce3cc]/30 group-hover:from-primary/20 to-primary/20 group-hover:to-[#5ce3cc]/30 duration-300 transition-colors pointer-events-none hidden md:block"
+                                />
+
                                 <motion.div
                                     initial={{ width: "0%" }}
                                     animate={animateResumeButton ? { width: "100%" } : { width: "0%" }}
                                     transition={{ duration: 0.8, ease: "easeInOut" }}
-                                    className="absolute inset-0 bg-gradient-to-r from-primary/30 to-primary/10 pointer-events-none"
+                                    className="absolute inset-0 bg-gradient-to-r md:bg-gradient-to-t from-[#5ce3cc]/30 group-hover:from-primary/20 to-primary/20 group-hover:to-[#5ce3cc]/30 duration-300 transition-colors pointer-events-none  md:hidden"
                                 />
-                                <div className="relative z-10">View My Resume</div>
+
+                                <div className="relative z-10 text-sm text-primary text-center tracking-wider">View My Resume</div>
 
                                 <div className="absolute inset-0 opacity-20">
                                     <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:20px_20px]" />
                                 </div>
+
                             </div>
                         </a>
                     </motion.div>
                 </div>
 
-                <div className="md:hidden">
-                    <motion.div
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        animate={showResumeButton ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-                        transition={{ duration: 0.4, ease: "easeOut" }}
-                        className="absolute left-1/2 transform -translate-x-1/2 top-1/2 z-50"
-                    >
-                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="relative inline-block">
-                            <div className="relative overflow-hidden px-6 py-2 rounded-lg font-medium text-white border-2 border-primary/60 bg-black/40 backdrop-blur-sm shadow-lg transition-all duration-300 hover:shadow-primary/20 hover:shadow-lg">
-                                <motion.div
-                                    initial={{ width: "0%" }}
-                                    animate={animateResumeButton ? { width: "100%" } : { width: "0%" }}
-                                    transition={{ duration: 0.8, ease: "easeInOut" }}
-                                    className="absolute inset-0 bg-gradient-to-r from-primary/30 to-primary/10 pointer-events-none"
-                                />
-                                <div className="relative z-10">View Resume</div>
-
-                                <div className="absolute inset-0 opacity-20">
-                                    <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:16px_16px]" />
-                                </div>
-                            </div>
-                        </a>
-                    </motion.div>
-
-                    {showResumeButton && (
-                        <motion.div
-                            initial={{ width: 0 }}
-                            animate={{ width: '50%' }}
-                            transition={{ duration: 0.6, ease: "easeOut", delay: 0.2 }}
-                            style={{
-                                position: 'absolute',
-                                left: '8px',
-                                top: '50%',
-                                height: '2px',
-                                background: 'linear-gradient(90deg, rgba(171,223,18,1) 0%, rgba(171,223,18,0.7) 70%, rgba(171,223,18,0.5) 100%)',
-                                boxShadow: "0 0 8px rgba(171,223,18,0.6), 0 0 16px rgba(171,223,18,0.4)",
-                                zIndex: 40
-                            }}
-                        />
-                    )}
-                </div>
             </div>
+
         </div>
     )
 }

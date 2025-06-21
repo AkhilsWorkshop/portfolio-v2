@@ -19,10 +19,10 @@ const Experience = () => {
 
     useEffect(() => {
 
-        const newParticles = Array.from({ length: 80 }, (_, i) => ({
+        const newParticles = Array.from({ length: 120 }, (_, i) => ({
             id: i,
             x: Math.random() * (window?.innerWidth || 1200),
-            y: Math.random() * (window?.innerHeight || 800),
+            y: Math.random() * ((window?.innerHeight * 3.5) || 800),
             size: Math.random() * 3 + 1,
             opacity: Math.random() * 0.8 + 0.2,
             animationDelay: Math.random() * 4,
