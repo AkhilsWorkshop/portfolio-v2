@@ -108,15 +108,15 @@ const CardShine = ({ techSrc, techName, techClassName }) => {
                 }
             }}>
             <div
-                className="h-[160px] w-[120px] grid will-change-transform origin-center transition-transform duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] [transform:rotateY(var(--r-x))_rotateX(var(--r-y))] rounded-[var(--radius)] hover:[--opacity:0.6] hover:[--duration:200ms] hover:[--easing:linear] hover:filter-none overflow-hidden">
+                className="h-[100px] w-[100px] grid will-change-transform origin-center transition-transform duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] [transform:rotateY(var(--r-x))_rotateX(var(--r-y))] rounded-[var(--radius)] hover:[--opacity:0.6] hover:[--duration:200ms] hover:[--easing:linear] hover:filter-none overflow-hidden">
                 <div
                     className="w-full h-full grid [grid-area:1/1] mix-blend-soft-light [clip-path:inset(0_0_0_0_round_var(--radius))]">
                     <div className="h-full w-full bg-gradient-to-tr from-[#5ce3cc]/20 to-primary/30 flex flex-col items-center justify-center gap-2 p-2">
 
                         <ImageSaveWrapper>
                             <Image
-                                height={80}
-                                width={64}
+                                height={40}
+                                width={40}
                                 alt={techName}
                                 src={techSrc}
                                 className={`${techClassName} disableSave`} />

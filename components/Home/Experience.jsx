@@ -3,6 +3,7 @@ import { progressData } from "@/data/ProgressData"
 import { motion, useScroll, useTransform } from "motion/react"
 import ProgressBar from "../Effects/ProgressBar"
 import { GoLink, GoUnlink } from "react-icons/go"
+import Heading from "../Reuse/Heading"
 
 const Experience = () => {
 
@@ -109,7 +110,7 @@ const Experience = () => {
     return (
         <div
             ref={containerRef}
-            className="relative w-full overflow-hidden bg-black pb-32">
+            className="relative h-full w-full flex flex-col justify-center items-center overflow-hidden bg-black pb-32">
 
             <motion.div
                 className="absolute inset-0 z-0"
@@ -169,8 +170,12 @@ const Experience = () => {
                 }}
             />
 
-            <motion.div style={{ y: textY }} className="relative z-30">
+            <motion.div style={{ y: textY }} className="relative z-30 flex flex-col justify-between items-center gap-4 w-full h-full max-w-6xl m-auto p-2 md:p-6">
+
+                <Heading name="Timeline" />
+
                 <ProgressBar data={progress} />
+
             </motion.div>
 
         </div>

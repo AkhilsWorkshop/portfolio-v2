@@ -9,10 +9,11 @@
   --color-sixth: #112240;
   --color-bgDark: #082A3A;
   --color-black: black;
+  --font-heading: 'Rock Salt', sans-serif;
+  --font-paragraph: 'Comic Neue', sans-serif;
 }
 
 html {
-  font-family: 'Open Sans', sans-serif;
   background-color: black;
 }
 

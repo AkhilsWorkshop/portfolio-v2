@@ -43,7 +43,7 @@ const Hero = () => {
                 containerClassName="bg-gradient-to-tr to-bgDark via-black from-black"
             >
 
-                <div className="relative max-w-screen-sm mx-auto flex items-center justify-center h-full px-10 sm:py-0 sm:px-4 z-20">
+                <div className="relative max-w-screen-sm mx-auto flex items-center justify-center h-full px-10 sm:py-0 sm:px-4 z-[1000]">
 
                     <div className="flex flex-col justify-center items-center gap-4 h-full">
 
@@ -64,7 +64,7 @@ const Hero = () => {
                         />
 
                         <motion.div
-                            className="fixed z-50"
+                            className="fixed z-100"
                             initial={false}
                             animate={{
                                 width: scrolled ? 64 : (showOverlay ? 256 : 128),
@@ -76,13 +76,13 @@ const Hero = () => {
                             }}
                             transition={{ duration: 0.5, ease: "easeInOut" }}
                         >
-                            <ImageSaveWrapper>
+                            <ImageSaveWrapper customCSS='z-100'>
                                 <Image
                                     src="/assets/images/layouts/logo.svg"
                                     alt="AK Logo"
                                     width={256}
                                     height={256}
-                                    className="disableSave"
+                                    className="disableSave z-100"
                                 />
                             </ImageSaveWrapper>
                         </motion.div>

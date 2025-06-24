@@ -79,7 +79,7 @@ export const skills = [
     },
     {
         URL: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/googlecloud/googlecloud-original.svg",
-        title: "Google Cloud",
+        title: "G Cloud",
     },
     {
         URL: "https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-plain-wordmark.svg",
