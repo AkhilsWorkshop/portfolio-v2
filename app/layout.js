@@ -1,5 +1,5 @@
 import "./globals.css"
-import { Rock_Salt, Comic_Neue } from 'next/font/google'
+import { Rock_Salt, Comic_Neue, Orbitron } from 'next/font/google'
 
 const rockSalt = Rock_Salt({
   weight: '400',
@@ -11,6 +11,11 @@ const comicNeue = Comic_Neue({
   subsets: ['latin'],
 })
 
+const orbitron = Orbitron({
+  weight: ['400', '800', '900'],
+  subsets: ['latin'],
+})
+
 export const metadata = {
   title: "Akhil Harikumar",
   description: "Created using NextJS 15 and Tailwind CSS 4",
@@ -18,7 +23,7 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" className={`${rockSalt.className} ${comicNeue.className}`}>
+    <html lang="en" className={`${rockSalt.className} ${comicNeue.className} ${orbitron.className}`}>
       <body
         className='antialiased'
       >
