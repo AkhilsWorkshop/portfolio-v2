@@ -4,24 +4,22 @@ import * as HoverCardPrimitive from "@radix-ui/react-hover-card"
 
 import { encode } from "qss"
 import React, { useEffect, useState } from "react"
-import {
-    AnimatePresence,
-    motion,
-    useMotionValue,
-    useSpring,
-} from "motion/react"
-
+import { AnimatePresence, useMotionValue, useSpring } from "motion/react"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import { FaExternalLinkAlt } from "react-icons/fa"
+import * as m from 'motion/react-m'
+import { LazyMotion } from "motion/react"
+
+const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
 export const LinkPreview = ({
     urlName,
     url,
     previewURL,
     className,
-    width = 300,
-    height = 200,
+    width = 320,
+    height = 180,
     isStatic = false,
     imageSrc = ""
 }) => {
@@ -66,6 +64,7 @@ export const LinkPreview = ({
 
     return (
         <>
+
             {isMounted ? (
                 <div className="hidden">
                     <img src={src} width={width} height={height} alt="hidden image" />
@@ -78,65 +77,94 @@ export const LinkPreview = ({
                 open={isOpen}
                 onOpenChange={setIsOpen}>
 
-                <HoverCardPrimitive.Trigger
-                    onMouseMove={handleMouseMove}
-                    onClick={() => setIsOpen(prev => !prev)}
+                <a
+                    href={url}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={cn("text-black dark:text-white", className)}>
-                    <span
-                        className="text-white hover:text-primary">
-                        {urlName}
-                    </span>
-                </HoverCardPrimitive.Trigger>
 
-                <HoverCardPrimitive.Content
-                    className="[transform-origin:var(--radix-hover-card-content-transform-origin)]"
-                    side="top"
-                    align="center"
-                    sideOffset={10}>
-                    <AnimatePresence>
-                        {isOpen && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 20, scale: 0.6 }}
-                                animate={{
-                                    opacity: 1,
-                                    y: 0,
-                                    scale: 1,
-                                    transition: {
-                                        type: "spring",
-                                        stiffness: 260,
-                                        damping: 20,
-                                    },
-                                }}
-                                exit={{ opacity: 0, y: 20, scale: 0.6 }}
-                                className="shadow-lg shadow-black/50 rounded-md backdrop-blur-sm"
-                                style={{
-                                    x: translateX,
-                                    willChange: "transform",
-                                }}>
-                                <div className="block bg-white/10 rounded-md p-3 border border-fourth">
-                                    <a
-                                        href={url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="relative block group overflow-hidden rounded-md border border-primary/50">
-                                        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md z-10">
-                                            <span className="text-white/60 text-sm inline-flex gap-2 justify-center items-center">View <FaExternalLinkAlt size={15} /></span>
-                                        </div>
-                                        <Image
-                                            src={isStatic ? imageSrc : src}
-                                            width={width}
-                                            height={height}
-                                            className="rounded-md group-hover:scale-110
-                                            group-hover:brightness-25
-                                            group-hover:grayscale-75 transition-transform duration-300"
-                                            alt="preview image" />
-                                    </a>
-                                </div>
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
-                </HoverCardPrimitive.Content>
+                    <HoverCardPrimitive.Trigger
+                        onMouseMove={handleMouseMove}
+                        onClick={e => {
+                            e.preventDefault()
+                            setIsOpen(prev => !prev)
+                        }}
+                        asChild>
+
+                        <span className="text-white hover:text-primary">
+                            {urlName}
+                        </span>
+
+                    </HoverCardPrimitive.Trigger>
+
+                </a>
+
+                <LazyMotion features={loadFeatures}>
+
+                    <HoverCardPrimitive.Content
+                        className="[transform-origin:var(--radix-hover-card-content-transform-origin)]"
+                        side="top"
+                        align="center"
+                        sideOffset={10}>
+
+                        <AnimatePresence>
+
+                            {isOpen && (
+
+                                <m.div
+                                    initial={{ opacity: 0, y: 20, scale: 0.6 }}
+                                    animate={{
+                                        opacity: 1,
+                                        y: 0,
+                                        scale: 1,
+                                        transition: {
+                                            type: "spring",
+                                            stiffness: 260,
+                                            damping: 20,
+                                        },
+                                    }}
+                                    exit={{ opacity: 0, y: 20, scale: 0.6 }}
+                                    className="shadow-lg shadow-black/50 rounded-md backdrop-blur-sm"
+                                    style={{
+                                        x: translateX,
+                                        willChange: "transform",
+                                    }}>
+
+                                    <div className="block bg-white/10 rounded-md p-3 border border-fourth">
+
+                                        <a
+                                            href={url}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="relative block group overflow-hidden rounded-md border border-primary/50">
+
+                                            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-md z-10">
+                                                <span className="text-white/60 text-sm inline-flex gap-2 justify-center items-center">View <FaExternalLinkAlt size={15} /></span>
+                                            </div>
+
+                                            <Image
+                                                loading="lazy"
+                                                src={isStatic ? imageSrc : src}
+                                                width={width}
+                                                height={height}
+                                                className="rounded-md group-hover:scale-110  group-hover:brightness-25 group-hover:grayscale-75 transition-transform duration-300"
+                                                alt="preview image" />
+                                        </a>
+
+                                    </div>
+
+                                </m.div>
+
+                            )}
+
+                        </AnimatePresence>
+
+                    </HoverCardPrimitive.Content>
+
+                </LazyMotion>
+
             </HoverCardPrimitive.Root>
+
         </>
     )
 }

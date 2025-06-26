@@ -1,9 +1,13 @@
 import React, { memo, useEffect, useRef, useState } from "react"
 import { progressData } from "@/data/ProgressData"
-import { motion, useScroll, useTransform } from "motion/react"
+import { useScroll, useTransform } from "motion/react"
+import * as m from 'motion/react-m'
 import ProgressBar from "../Effects/ProgressBar"
 import { GoLink, GoUnlink } from "react-icons/go"
+import { LazyMotion } from "motion/react"
 import Heading from "../Reuse/Heading"
+
+const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
 const Experience = () => {
 
@@ -38,7 +42,7 @@ const Experience = () => {
         .reverse()
         .map((item, index) => {
             return (
-                <motion.div
+                <m.div
                     className="flex flex-col gap-6 relative h-full p-2"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -46,7 +50,7 @@ const Experience = () => {
                     viewport={{ once: true }} >
 
                     <div className="flex flex-col items-start">
-                        <h4 className="text-base md:text-lg font-semibold text-gray-200 font-space">{item.title}</h4>
+                        <h1 className="text-base md:text-lg font-semibold text-gray-200 font-space">{item.title}</h1>
                         <p className="text-sm text-gray-500 font-medium uppercase">{item.date}</p>
                     </div>
 
@@ -103,82 +107,87 @@ const Experience = () => {
 
                     )}
 
-                </motion.div>
+                </m.div>
             )
         })
 
     return (
-        <div
-            ref={containerRef}
-            className="relative h-full w-full flex flex-col justify-center items-center overflow-hidden bg-black pb-32">
 
-            <motion.div
-                className="absolute inset-0 z-0"
-                style={{ y: starsY }}>
-
-                {particles.map((particle) => (
-                    <motion.div
-                        key={particle.id}
-                        className="absolute rounded-full bg-white"
-                        style={{
-                            left: particle.x,
-                            top: particle.y,
-                            width: particle.size,
-                            height: particle.size,
-                            boxShadow: `0 0 ${particle.size * 4}px rgba(255,255,255,0.6)`,
-                        }}
-                        animate={{
-                            opacity: [0.2, 1, 0.2],
-                            scale: [0.8, 1.2, 0.8],
-                        }}
-                        transition={{
-                            duration: 2 + Math.random() * 2,
-                            repeat: Infinity,
-                            delay: particle.animationDelay,
-                            ease: "easeInOut",
-                        }}
-                    />
-                ))}
-
-            </motion.div>
+        <LazyMotion features={loadFeatures}>
 
             <div
-                className="absolute top-1/4 left-1/5 w-[600px] h-[600px] rounded-full blur-[60px]"
-                style={{
-                    background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.1) 40%, transparent 70%)'
-                }}
-            />
+                ref={containerRef}
+                className="relative h-full w-full flex flex-col justify-center items-center overflow-hidden bg-black pb-32">
 
-            <div
-                className="absolute bottom-1/4 right-1/5 w-[500px] h-[500px] rounded-full blur-[70px]"
-                style={{
-                    background: 'radial-gradient(circle, rgba(147, 51, 234, 0.25) 0%, rgba(126, 34, 206, 0.12) 40%, transparent 70%)'
-                }}
-            />
+                <m.div
+                    className="absolute inset-0 z-0"
+                    style={{ y: starsY }}>
 
-            <div
-                className="absolute top-1/2 right-1/3 w-[400px] h-[400px] rounded-full blur-[50px]"
-                style={{
-                    background: 'radial-gradient(circle, rgba(34, 211, 238, 0.18) 0%, rgba(6, 182, 212, 0.08) 40%, transparent 70%)'
-                }}
-            />
+                    {particles.map((particle) => (
+                        <m.div
+                            key={particle.id}
+                            className="absolute rounded-full bg-white"
+                            style={{
+                                left: particle.x,
+                                top: particle.y,
+                                width: particle.size,
+                                height: particle.size,
+                                boxShadow: `0 0 ${particle.size * 4}px rgba(255,255,255,0.6)`,
+                            }}
+                            animate={{
+                                opacity: [0.2, 1, 0.2],
+                                scale: [0.8, 1.2, 0.8],
+                            }}
+                            transition={{
+                                duration: 2 + Math.random() * 2,
+                                repeat: Infinity,
+                                delay: particle.animationDelay,
+                                ease: "easeInOut",
+                            }}
+                        />
+                    ))}
 
-            <div
-                className="absolute top-3/4 left-1/3 w-[300px] h-[300px] rounded-full blur-[40px]"
-                style={{
-                    background: 'radial-gradient(circle, rgba(52, 211, 153, 0.15) 0%, rgba(16, 185, 129, 0.06) 40%, transparent 70%)'
-                }}
-            />
+                </m.div>
 
-            <motion.div style={{ y: textY }} className="relative z-30 flex flex-col justify-between items-center gap-4 w-full h-full max-w-6xl m-auto p-2 md:p-6">
+                <div
+                    className="absolute top-1/4 left-1/5 w-[600px] h-[600px] rounded-full blur-[60px]"
+                    style={{
+                        background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.1) 40%, transparent 70%)'
+                    }}
+                />
 
-                <Heading name="Timeline" />
+                <div
+                    className="absolute bottom-1/4 right-1/5 w-[500px] h-[500px] rounded-full blur-[70px]"
+                    style={{
+                        background: 'radial-gradient(circle, rgba(147, 51, 234, 0.25) 0%, rgba(126, 34, 206, 0.12) 40%, transparent 70%)'
+                    }}
+                />
 
-                <ProgressBar data={progress} />
+                <div
+                    className="absolute top-1/2 right-1/3 w-[400px] h-[400px] rounded-full blur-[50px]"
+                    style={{
+                        background: 'radial-gradient(circle, rgba(34, 211, 238, 0.18) 0%, rgba(6, 182, 212, 0.08) 40%, transparent 70%)'
+                    }}
+                />
 
-            </motion.div>
+                <div
+                    className="absolute top-3/4 left-1/3 w-[300px] h-[300px] rounded-full blur-[40px]"
+                    style={{
+                        background: 'radial-gradient(circle, rgba(52, 211, 153, 0.15) 0%, rgba(16, 185, 129, 0.06) 40%, transparent 70%)'
+                    }}
+                />
 
-        </div>
+                <m.div style={{ y: textY }} className="relative z-30 flex flex-col justify-between items-center gap-4 w-full h-full max-w-6xl m-auto p-2 md:p-6">
+
+                    <Heading name="Timeline" />
+
+                    <ProgressBar data={progress} />
+
+                </m.div>
+
+            </div>
+
+        </LazyMotion>
     )
 }
 

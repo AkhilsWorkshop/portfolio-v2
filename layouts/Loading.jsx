@@ -1,8 +1,11 @@
 "use client"
 
-import { motion, AnimatePresence } from "motion/react"
+import { AnimatePresence, LazyMotion } from "motion/react"
 import { memo, useEffect, useState } from "react"
 import Logo from "./Logo"
+import * as m from 'motion/react-m'
+
+const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
 const Loading = ({ children }) => {
 
@@ -81,17 +84,18 @@ const Loading = ({ children }) => {
     }, [])
 
     return (
-        <>
+        <LazyMotion features={loadFeatures}>
+
             <AnimatePresence mode="wait">
 
                 {isLoading && (
-                    <motion.div
+                    <m.div
                         key="loading"
                         className="fixed inset-0 z-50 bg-black flex flex-col items-center justify-center"
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.8 }}>
 
-                        <motion.div
+                        <m.div
                             className="relative z-10"
                             initial={{ scale: 0, opacity: 0 }}
                             animate={{
@@ -99,9 +103,9 @@ const Loading = ({ children }) => {
                                 opacity: 1,
                                 y: showTransition ? -1000 : 0,
                             }}
-                            transition={{ duration: showTransition ? 1 : 0.8, ease: "easeOut" }}
-                        >
-                            <motion.div
+                            transition={{ duration: showTransition ? 1 : 0.8, ease: "easeOut" }}>
+
+                            <m.div
                                 animate={{
                                     y: showTransition ? 0 : [-8, 8, -8],
                                     rotate: showTransition ? 0 : [0, 3, -3, 0],
@@ -114,11 +118,11 @@ const Loading = ({ children }) => {
 
                                 <Logo size="lg" layoutId="main-logo" />
 
-                            </motion.div>
+                            </m.div>
 
-                        </motion.div>
+                        </m.div>
 
-                    </motion.div>
+                    </m.div>
                 )}
 
             </AnimatePresence>
@@ -126,19 +130,19 @@ const Loading = ({ children }) => {
             <AnimatePresence>
 
                 {!isLoading && (
-                    <motion.div
+                    <m.div
                         key="content"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 1, ease: "easeOut" }}
                     >
                         {children}
-                    </motion.div>
+                    </m.div>
                 )}
 
             </AnimatePresence>
 
-        </>
+        </LazyMotion>
     )
 }
 

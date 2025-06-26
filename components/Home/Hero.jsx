@@ -2,8 +2,12 @@
 
 import Header from "@/layouts/Header"
 import Logo from "@/layouts/Logo"
-import { motion, useScroll, useTransform } from "motion/react"
+import { useScroll, useTransform } from "motion/react"
+import * as m from 'motion/react-m'
 import { memo, useEffect, useRef, useState } from "react"
+import { LazyMotion } from "motion/react"
+
+const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
 const CONTAINER_VARIANTS = {
     hidden: { opacity: 0 },
@@ -77,7 +81,7 @@ const Hero = () => {
 
     useEffect(() => {
 
-        const newParticles = Array.from({ length: 120 }, (_, i) => ({
+        const newParticles = Array.from({ length: 30 }, (_, i) => ({
             id: i,
             x: Math.random() * (window?.innerWidth || 1200),
             y: Math.random() * ((window?.innerHeight * 3.5) || 800),
@@ -91,24 +95,24 @@ const Hero = () => {
     }, [])
 
     return (
-        <>
+        <LazyMotion features={loadFeatures}>
 
             <Header
                 isVisible={showHeader}
                 isScrolled={isScrolled}
             />
 
-            <motion.section
+            <m.section
                 ref={containerRef}
                 className="relative h-full min-h-[100dvh] w-full flex flex-col justify-center items-center bg-black"
                 style={{ opacity: heroOpacity }}>
 
-                <motion.div
+                <m.div
                     className="absolute inset-0 z-0"
                     style={{ y: starsY }}>
 
                     {particles.map((particle) => (
-                        <motion.div
+                        <m.div
                             key={particle.id}
                             className="absolute rounded-full bg-white"
                             style={{
@@ -131,15 +135,15 @@ const Hero = () => {
                         />
                     ))}
 
-                </motion.div>
+                </m.div>
 
-                <motion.div
+                <m.div
                     className="relative flex flex-col md:flex-row-reverse z-10 px-4 max-w-6xl mx-auto w-full justify-around items-center gap-10"
                     variants={CONTAINER_VARIANTS}
                     initial="hidden"
                     animate="visible">
 
-                    <motion.div
+                    <m.div
                         className="flex justify-center"
                         style={{
                             scale: logoScale,
@@ -148,7 +152,7 @@ const Hero = () => {
                         variants={FLOATING_VARIANTS}
                         animate="animate">
 
-                        <motion.div
+                        <m.div
                             className="relative"
                             variants={ITEM_VARIANTS}
                             initial={{ opacity: 0, scale: 0.8 }}
@@ -157,37 +161,36 @@ const Hero = () => {
 
                             <Logo size="lg" layoutId="main-logo" />
 
-                        </motion.div>
+                        </m.div>
 
-                    </motion.div>
+                    </m.div>
 
                     <div className="flex flex-col items-start justify-start font-space">
 
-                        <motion.h1
-                            className="text-xl lg:text-2xl text-white/70"
-                            variants={ITEM_VARIANTS}>
+                        <h1
+                            className="text-xl lg:text-2xl text-white/70">
                             Hi, I'm
-                        </motion.h1>
+                        </h1>
 
-                        <motion.h1
+                        <m.h1
                             className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight w-full uppercase"
                             variants={ITEM_VARIANTS}>
                             <span className="bg-gradient-to-t from-[#5ce3cc] to-primary md:to-[#5ce3cc] bg-clip-text text-transparent">Akhil</span> <span className="bg-gradient-to-t md:bg-gradient-to-r from-[#5ce3cc] to-primary bg-clip-text text-transparent">Harikumar</span>
-                        </motion.h1>
+                        </m.h1>
 
-                        <motion.h1
+                        <m.h1
                             className="text-2xl md:text-3xl lg:text-4xl text-white leading-tight"
                             variants={ITEM_VARIANTS}>
                             Full Stack Developer
-                        </motion.h1>
+                        </m.h1>
 
                     </div>
 
-                </motion.div>
+                </m.div>
 
-            </motion.section>
+            </m.section>
 
-        </>
+        </LazyMotion>
     )
 }
 

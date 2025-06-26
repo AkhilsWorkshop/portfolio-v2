@@ -1,9 +1,12 @@
 "use client"
 
 import ImageSaveWrapper from "@/components/Reuse/ImageSaveWrapper"
-import { motion } from "motion/react"
 import Image from "next/image"
 import { memo } from "react"
+import * as m from 'motion/react-m'
+import { LazyMotion } from "motion/react"
+
+const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
 const Logo = ({ size = "md", layoutId = "main-logo" }) => {
 
@@ -20,21 +23,26 @@ const Logo = ({ size = "md", layoutId = "main-logo" }) => {
     }
 
     return (
-        <motion.div className='relative shrink-0' layoutId={layoutId}>
+        <LazyMotion features={loadFeatures}>
 
-            <ImageSaveWrapper customCSS='z-100 shrink-0'>
+            <m.div className='relative shrink-0' layoutId={layoutId}>
 
-                <Image
-                    src="/images/logo.svg"
-                    alt="AK Logo"
-                    width={sizeClasses[size]}
-                    height={sizeClasses[size]}
-                    className={`disableSave z-100 shrink-0 ${imageClasses[size]}`}
-                />
+                <ImageSaveWrapper customCSS='z-100 shrink-0'>
 
-            </ImageSaveWrapper>
+                    <Image
+                        priority
+                        src="/images/logo.webp"
+                        alt="AK Logo"
+                        width={sizeClasses[size]}
+                        height={sizeClasses[size]}
+                        className={`disableSave z-100 shrink-0 ${imageClasses[size]}`}
+                    />
 
-        </motion.div>
+                </ImageSaveWrapper>
+
+            </m.div>
+
+        </LazyMotion>
     )
 }
 
