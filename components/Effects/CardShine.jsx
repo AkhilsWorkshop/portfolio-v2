@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { memo, useRef } from "react"
-import ImageSaveWrapper from "../Reuse/Image/ImageSaveWrapper"
+import ImageSaveWrapper from "../Reuse/ImageSaveWrapper"
 
 const CardShine = ({ techSrc, techName, techClassName }) => {
 
@@ -122,7 +122,7 @@ const CardShine = ({ techSrc, techName, techClassName }) => {
                                 className={`${techClassName} disableSave`} />
                         </ImageSaveWrapper>
 
-                        <h1 className="text-white text-sm tracking-wider">{techName}</h1>
+                        <h1 className="text-white text-xs tracking-wider">{techName}</h1>
 
                     </div>
                 </div>

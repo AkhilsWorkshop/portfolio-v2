@@ -1,128 +1,191 @@
-import { WavyBG } from "../Effects/WavyBG"
-import Image from "next/image"
-import { HeaderButton } from "../Effects/HeaderButton"
-import { memo, useEffect, useState } from "react";
-import { AnimatePresence, motion } from "motion/react";
-import ImageSaveWrapper from "../Reuse/Image/ImageSaveWrapper";
+"use client"
+
+import Header from "@/layouts/Header"
+import Logo from "@/layouts/Logo"
+import { motion, useScroll, useTransform } from "motion/react"
+import { memo, useEffect, useRef, useState } from "react"
+
+const CONTAINER_VARIANTS = {
+    hidden: { opacity: 0 },
+    visible: {
+        opacity: 1,
+        transition: {
+            staggerChildren: 0.3,
+            delayChildren: 0.2,
+        },
+    },
+}
+
+const ITEM_VARIANTS = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+        opacity: 1,
+        y: 0,
+        transition: {
+            duration: 0.8,
+            ease: "easeOut",
+        },
+    },
+}
+
+const FLOATING_VARIANTS = {
+    animate: {
+        y: [-10, 10, -10],
+        rotate: [0, 5, -5, 0],
+        transition: {
+            duration: 6,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "easeInOut",
+        },
+    },
+}
 
 const Hero = () => {
 
-    const [showOverlay, setShowOverlay] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
+    const [particles, setParticles] = useState([])
 
-    useEffect(() => {
-        if (window.scrollY <= 50) {
-            setShowOverlay(true);
-            const timer = setTimeout(() => setShowOverlay(false), 1500);
-            return () => clearTimeout(timer);
-        }
-    }, []);
+    const containerRef = useRef(null)
+
+    const [isScrolled, setIsScrolled] = useState(false)
+    const [showHeader, setShowHeader] = useState(false)
+    const { scrollY } = useScroll()
+
+    const logoScale = useTransform(scrollY, [0, 100], [1, 0])
+    const logoOpacity = useTransform(scrollY, [0, 80], [1, 0])
+    const heroOpacity = useTransform(scrollY, [0, 300], [1, 0.3])
+
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start end", "end start"]
+    })
+
+    const starsY = useTransform(scrollYProgress, [0, 1], [0, -200])
 
     useEffect(() => {
 
         const handleScroll = () => {
-            if (window.scrollY > 50) {
-                setScrolled(true);
-            } else {
-                setScrolled(false);
-            }
-        };
+            const scrollPosition = window.scrollY
+            setIsScrolled(scrollPosition > 50)
+            setShowHeader(scrollPosition > 80)
+        }
 
-        handleScroll();
+        window.addEventListener("scroll", handleScroll)
 
-        window.addEventListener('scroll', handleScroll);
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+        return () => window.removeEventListener("scroll", handleScroll)
+
+    }, [])
+
+    useEffect(() => {
+
+        const newParticles = Array.from({ length: 120 }, (_, i) => ({
+            id: i,
+            x: Math.random() * (window?.innerWidth || 1200),
+            y: Math.random() * ((window?.innerHeight * 3.5) || 800),
+            size: Math.random() * 3 + 1,
+            opacity: Math.random() * 0.8 + 0.2,
+            animationDelay: Math.random() * 4,
+        }))
+
+        setParticles(newParticles)
+
+    }, [])
 
     return (
-
         <>
 
-            <WavyBG
-                id="home"
-                containerClassName="bg-gradient-to-tr to-bgDark via-black from-black"
-            >
+            <Header
+                isVisible={showHeader}
+                isScrolled={isScrolled}
+            />
 
-                <div className="relative max-w-screen-sm mx-auto flex items-center justify-center h-full px-10 sm:py-0 sm:px-4 z-[1000]">
+            <motion.section
+                ref={containerRef}
+                className="relative h-full min-h-[100dvh] w-full flex flex-col justify-center items-center bg-black"
+                style={{ opacity: heroOpacity }}>
 
-                    <div className="flex flex-col justify-center items-center gap-4 h-full">
+                <motion.div
+                    className="absolute inset-0 z-0"
+                    style={{ y: starsY }}>
 
+                    {particles.map((particle) => (
                         <motion.div
-                            className="fixed inset-0 z-40 flex items-center justify-center"
-                            initial={{
-                                opacity: 1,
-                                backgroundColor: "#000",
-                                backdropFilter: "blur(4px)"
+                            key={particle.id}
+                            className="absolute rounded-full bg-white"
+                            style={{
+                                left: particle.x,
+                                top: particle.y,
+                                width: particle.size,
+                                height: particle.size,
+                                boxShadow: `0 0 ${particle.size * 4}px rgba(255,255,255,0.6)`,
                             }}
                             animate={{
-                                opacity: showOverlay ? 1 : 0,
-                                backdropFilter: showOverlay ? "blur(4px)" : "blur(0px)",
-                                backgroundColor: showOverlay ? "rgba(0, 0, 0, 0.8)" : "transparent"
+                                opacity: [0.2, 1, 0.2],
+                                scale: [0.8, 1.2, 0.8],
                             }}
-                            transition={{ duration: 0.3 }}
-                            style={{ pointerEvents: showOverlay ? "auto" : "none" }}
+                            transition={{
+                                duration: 2 + Math.random() * 2,
+                                repeat: Infinity,
+                                delay: particle.animationDelay,
+                                ease: "easeInOut",
+                            }}
                         />
+                    ))}
+
+                </motion.div>
+
+                <motion.div
+                    className="relative flex flex-col md:flex-row-reverse z-10 px-4 max-w-6xl mx-auto w-full justify-around items-center gap-10"
+                    variants={CONTAINER_VARIANTS}
+                    initial="hidden"
+                    animate="visible">
+
+                    <motion.div
+                        className="flex justify-center"
+                        style={{
+                            scale: logoScale,
+                            opacity: logoOpacity,
+                        }}
+                        variants={FLOATING_VARIANTS}
+                        animate="animate">
 
                         <motion.div
-                            className="fixed z-100"
-                            initial={false}
-                            animate={{
-                                width: scrolled ? 64 : (showOverlay ? 256 : 128),
-                                height: scrolled ? 64 : (showOverlay ? 256 : 128),
-                                top: scrolled ? "20px" : (showOverlay ? "50%" : "20%"),
-                                left: scrolled ? "20px" : "50%",
-                                x: scrolled ? 0 : "-50%",
-                                y: scrolled ? 0 : (showOverlay ? "-50%" : 0)
-                            }}
-                            transition={{ duration: 0.5, ease: "easeInOut" }}
-                        >
-                            <ImageSaveWrapper customCSS='z-100'>
-                                <Image
-                                    src="/assets/images/layouts/logo.svg"
-                                    alt="AK Logo"
-                                    width={256}
-                                    height={256}
-                                    className="disableSave z-100"
-                                />
-                            </ImageSaveWrapper>
+                            className="relative"
+                            variants={ITEM_VARIANTS}
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ delay: 0.2, duration: 1, ease: "easeOut" }}>
+
+                            <Logo size="lg" layoutId="main-logo" />
+
                         </motion.div>
 
-                        <AnimatePresence mode="wait">
-                            {!showOverlay && (
-                                <>
-                                    <motion.h2
-                                        className="text-4xl sm:text-7xl font-bold text-[#F3F0EB]"
-                                        initial={{ y: -50, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.5, delay: 0.2 }}
-                                    >
-                                        Akhil Harikumar
-                                    </motion.h2>
-                                    <motion.h2
-                                        className="text-[#F3F0EB]/80 text-base sm:text-lg uppercase"
-                                        initial={{ y: -50, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.5, delay: 0.5 }}
-                                    >
-                                        Full Stack Software Developer
-                                    </motion.h2>
-                                    <motion.h2
-                                        className="text-[#F3F0EB]/80 text-base sm:text-lg uppercase"
-                                        initial={{ y: -50, opacity: 0 }}
-                                        animate={{ y: 0, opacity: 1 }}
-                                        transition={{ duration: 0.5, delay: 0.7 }}
-                                    >
-                                        <HeaderButton />
-                                    </motion.h2>
-                                </>
-                            )}
-                        </AnimatePresence>
+                    </motion.div>
+
+                    <div className="flex flex-col items-start justify-start font-space">
+
+                        <motion.h1
+                            className="text-xl lg:text-2xl text-white/70"
+                            variants={ITEM_VARIANTS}>
+                            Hi, I'm
+                        </motion.h1>
+
+                        <motion.h1
+                            className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight w-full uppercase"
+                            variants={ITEM_VARIANTS}>
+                            <span className="bg-gradient-to-t from-[#5ce3cc] to-primary md:to-[#5ce3cc] bg-clip-text text-transparent">Akhil</span> <span className="bg-gradient-to-t md:bg-gradient-to-r from-[#5ce3cc] to-primary bg-clip-text text-transparent">Harikumar</span>
+                        </motion.h1>
+
+                        <motion.h1
+                            className="text-2xl md:text-3xl lg:text-4xl text-white leading-tight"
+                            variants={ITEM_VARIANTS}>
+                            Full Stack Developer
+                        </motion.h1>
 
                     </div>
 
-                </div>
+                </motion.div>
 
-            </WavyBG>
+            </motion.section>
 
         </>
     )

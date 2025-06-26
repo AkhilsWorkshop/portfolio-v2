@@ -46,11 +46,11 @@ const Experience = () => {
                     viewport={{ once: true }} >
 
                     <div className="flex flex-col items-start">
-                        <h4 className="text-lg font-semibold text-gray-200">{item.title}</h4>
+                        <h4 className="text-base md:text-lg font-semibold text-gray-200 font-space">{item.title}</h4>
                         <p className="text-sm text-gray-500 font-medium uppercase">{item.date}</p>
                     </div>
 
-                    <p className="text-base text-gray-400 leading-relaxed">
+                    <p className="text-base text-gray-200 leading-relaxed">
                         {item.shortDescription}
                     </p>
 

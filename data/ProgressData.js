@@ -29,6 +29,13 @@ export const progressData = [
         date: "Aug 2021 - May 2023",
         shortDescription: "Master of Science - Computer Science",
         fullDescription: "I did my Master's in Computer Science with a focus on Cloud Computing and Database Systems. Studied Web Management, Python, and Algorithms, building a strong technical foundation for my development work.",
+        links: [
+            {
+                label: "AWS Certified Cloud Practitioner",
+                url: "https://www.credly.com/badges/909ad883-d528-4586-98fe-d8b5ee67b33b",
+                previewURL: "https://www.credly.com/badges/909ad883-d528-4586-98fe-d8b5ee67b33b"
+            },
+        ],
         tech: [
             "Python",
             "JavaScript",

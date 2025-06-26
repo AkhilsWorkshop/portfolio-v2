@@ -32,7 +32,7 @@ const Header = ({ isVisible = false, isScrolled = false }) => {
                     </motion.div>
 
                     <motion.div
-                        className="flex space-x-8"
+                        className="flex space-x-4 md:space-x-8"
                         initial={{ opacity: 0, x: 20 }}
                         animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 20 }}
                         transition={{ delay: 0.3 }}
@@ -43,7 +43,7 @@ const Header = ({ isVisible = false, isScrolled = false }) => {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="GitHub">
-                            <AiFillGithub className="h-8 w-8 duration-300 text-white hover:text-primary hover:scale-110" />
+                            <AiFillGithub className="h-6 md:h-8 w-6 md:w-8 duration-300 text-white hover:text-primary hover:scale-110" />
                         </a>
 
                         <a
@@ -51,7 +51,7 @@ const Header = ({ isVisible = false, isScrolled = false }) => {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="LinkedIn">
-                            <AiFillLinkedin className="h-8 w-8 duration-300 text-white hover:text-primary hover:scale-110" />
+                            <AiFillLinkedin className="h-6 md:h-8 w-6 md:w-8 duration-300 text-white hover:text-primary hover:scale-110" />
                         </a>
 
                     </motion.div>

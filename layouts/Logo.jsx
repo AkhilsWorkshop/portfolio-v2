@@ -1,6 +1,6 @@
 "use client"
 
-import ImageSaveWrapper from "@/components/Reuse/Image/ImageSaveWrapper"
+import ImageSaveWrapper from "@/components/Reuse/ImageSaveWrapper"
 import { motion } from "motion/react"
 import Image from "next/image"
 import { memo } from "react"
@@ -25,7 +25,7 @@ const Logo = ({ size = "md", layoutId = "main-logo" }) => {
             <ImageSaveWrapper customCSS='z-100 shrink-0'>
 
                 <Image
-                    src="/assets/images/layouts/logo.svg"
+                    src="/images/logo.svg"
                     alt="AK Logo"
                     width={sizeClasses[size]}
                     height={sizeClasses[size]}

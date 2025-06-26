@@ -29,7 +29,9 @@ const ProgressBar = ({ data }) => {
     })
 
     useEffect(() => {
+
         const unsubscribe = scrollYProgress.on("change", (latest) => {
+
             setMaxProgress(prev => Math.max(prev, latest))
 
             if (latest > 0.95 && !showResumeButton) {
@@ -40,7 +42,9 @@ const ProgressBar = ({ data }) => {
                 }, 300)
             }
         })
+
         return unsubscribe
+
     }, [scrollYProgress, showResumeButton])
 
     const heightTransform = useTransform(() => maxProgress * height)
@@ -114,6 +118,37 @@ const ProgressBar = ({ data }) => {
                                         </div>
 
                                         <div className="w-2/12 flex justify-center">
+
+                                            <motion.div
+                                                data-milestone={index}
+                                                className={`relative z-10 w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-lg border-2 ${shouldActivate ? 'border-primary/60' : 'border-gray-600'
+                                                    }`}
+                                                style={{
+                                                    boxShadow: shouldActivate ? "0 0 20px rgba(171,223,18,0.6)" : "0 0 0 rgba(171,223,18,0)"
+                                                }}
+                                            >
+
+                                                <motion.div
+                                                    className={`w-4 h-4 rounded-full shadow-inner ${shouldActivate ? 'bg-primary' : 'bg-gray-400'
+                                                        }`}
+                                                    style={{
+                                                        boxShadow: shouldActivate ? "0 0 15px rgba(171,223,18,0.8)" : "0 0 0 rgba(171,223,18,0)"
+                                                    }}
+                                                />
+
+                                            </motion.div>
+
+                                        </div>
+
+                                        <div className="w-5/12" />
+                                    </>
+
+                                ) : (
+
+                                    <>
+                                        <div className="w-5/12" />
+
+                                        <div className="w-2/12 flex justify-center">
                                             <motion.div
                                                 data-milestone={index}
                                                 className={`relative z-10 w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-lg border-2 ${shouldActivate ? 'border-primary/60' : 'border-gray-600'
@@ -130,68 +165,51 @@ const ProgressBar = ({ data }) => {
                                                     }}
                                                 />
                                             </motion.div>
+
                                         </div>
 
-                                        <div className="w-5/12" />
-                                    </>
-                                ) : (<>
-                                    <div className="w-5/12" />
+                                        <div className="w-5/12 pl-8">
 
-                                    <div className="w-2/12 flex justify-center">
-                                        <motion.div
-                                            data-milestone={index}
-                                            className={`relative z-10 w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-lg border-2 ${shouldActivate ? 'border-primary/60' : 'border-gray-600'
-                                                }`}
-                                            style={{
-                                                boxShadow: shouldActivate ? "0 0 20px rgba(171,223,18,0.6)" : "0 0 0 rgba(171,223,18,0)"
-                                            }}
-                                        >
                                             <motion.div
-                                                className={`w-4 h-4 rounded-full shadow-inner ${shouldActivate ? 'bg-primary' : 'bg-gray-400'
-                                                    }`}
-                                                style={{
-                                                    boxShadow: shouldActivate ? "0 0 15px rgba(171,223,18,0.8)" : "0 0 0 rgba(171,223,18,0)"
+                                                className="relative p-6 rounded-xl bg-gradient-to-br from-gray-900/20 to-gray-950/20 border border-gray-800/30 backdrop-blur-sm shadow-xl"
+                                                transition={{
+                                                    duration: 0.3
                                                 }}
-                                            />
-                                        </motion.div>
-                                    </div>
+                                            >
 
-                                    <div className="w-5/12 pl-8">
+                                                <CardGlow
+                                                    spread={40}
+                                                    glow={true}
+                                                    disabled={false}
+                                                    proximity={64}
+                                                    inactiveZone={0.01}
+                                                    borderWidth={2}
+                                                />
 
-                                        <motion.div
-                                            className="relative p-6 rounded-xl bg-gradient-to-br from-gray-900/20 to-gray-950/20 border border-gray-800/30 backdrop-blur-sm shadow-xl"
-                                            transition={{
-                                                duration: 0.3
-                                            }}
-                                        >
+                                                <div className="absolute inset-0 opacity-10">
+                                                    <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:40px_40px]" />
+                                                </div>
 
-                                            <CardGlow
-                                                spread={40}
-                                                glow={true}
-                                                disabled={false}
-                                                proximity={64}
-                                                inactiveZone={0.01}
-                                                borderWidth={2}
-                                            />
+                                                <div className="relative z-10">
+                                                    {item}
+                                                </div>
 
-                                            <div className="absolute inset-0 opacity-10">
-                                                <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:40px_40px]" />
-                                            </div>
+                                            </motion.div>
 
-                                            <div className="relative z-10">
-                                                {item}
-                                            </div>
+                                        </div>
 
-                                        </motion.div>
-                                    </div>
-                                </>
+                                    </>
+
                                 )}
+
                             </div>
 
                             <div className="md:hidden w-full px-4">
 
                                 <div className="flex items-start gap-4">
+
                                     <div className="flex flex-col items-center">
+
                                         <motion.div
                                             data-milestone={index}
                                             className={`w-8 h-8 rounded-full bg-black flex items-center justify-center shadow-lg border-2 ${shouldActivate ? 'border-primary/60' : 'border-gray-600'
@@ -208,7 +226,9 @@ const ProgressBar = ({ data }) => {
                                                 }}
                                             />
                                         </motion.div>
+
                                     </div>
+
                                     <div className="flex-1 min-w-0">
 
                                         <motion.div
@@ -226,9 +246,13 @@ const ProgressBar = ({ data }) => {
                                             </div>
 
                                         </motion.div>
+
                                     </div>
+
                                 </div>
+
                             </div>
+
                         </motion.div>
                     )
                 })}
@@ -269,6 +293,7 @@ const ProgressBar = ({ data }) => {
                                 }}
                             />
                         ))}
+
                     </motion.div>
 
                     <motion.div
@@ -278,11 +303,13 @@ const ProgressBar = ({ data }) => {
                         }}
                         className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2"
                     >
+
                         <div className="w-2 h-2 bg-primary rounded-full shadow-lg"
                             style={{
                                 boxShadow: "0 0 8px rgba(171,223,18,0.8), 0 0 16px rgba(171,223,18,0.4)"
                             }}
                         />
+
                     </motion.div>
 
                     {Array.from({ length: 15 }, (_, i) => {
@@ -373,6 +400,7 @@ const ProgressBar = ({ data }) => {
                         />
 
                     </motion.div>
+
                     {Array.from({ length: 12 }, (_, i) => {
 
                         const particleSize = Math.random() * 1.2 + 0.4
@@ -417,7 +445,7 @@ const ProgressBar = ({ data }) => {
                         transition={{ duration: 0.4, ease: "easeOut" }}
                         className="absolute left-1/2 transform -translate-x-1/2 -bottom-10 z-50 w-full md:w-auto px-4"
                     >
-                        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="relative inline-block w-full">
+                        <a href="/Akhil-Resume.pdf" target="_blank" rel="noopener noreferrer" className="relative inline-block w-full">
 
                             <div className="relative overflow-hidden px-8 py-3 rounded-lg font-medium text-white border-2 border-primary/60 bg-black/40 backdrop-blur-sm shadow-lg transition-all duration-300 group">
 
@@ -435,7 +463,7 @@ const ProgressBar = ({ data }) => {
                                     className="absolute inset-0 bg-gradient-to-r md:bg-gradient-to-t from-[#5ce3cc]/30 group-hover:from-primary/20 to-primary/20 group-hover:to-[#5ce3cc]/30 duration-300 transition-colors pointer-events-none  md:hidden"
                                 />
 
-                                <div className="relative z-10 text-sm text-primary text-center tracking-wider">View My Resume</div>
+                                <div className="relative z-10 text-sm text-primary text-center tracking-wider font-space">View My Resume</div>
 
                                 <div className="absolute inset-0 opacity-20">
                                     <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:20px_20px]" />
@@ -443,7 +471,9 @@ const ProgressBar = ({ data }) => {
 
                             </div>
                         </a>
+
                     </motion.div>
+
                 </div>
 
             </div>

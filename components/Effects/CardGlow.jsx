@@ -78,18 +78,24 @@ const CardGlow = () => {
         })
 
         return () => {
+
             if (animationFrameRef.current) {
                 cancelAnimationFrame(animationFrameRef.current)
             }
+
             window.removeEventListener("scroll", handleScroll)
             document.body.removeEventListener("pointermove", handlePointerMove)
+
         }
+
     }, [handleMove])
 
     return (
         <>
+
             <div
                 className="pointer-events-none absolute -inset-px hidden rounded-[inherit] border transition-opacity" />
+
             <div
                 ref={containerRef}
                 style={{
@@ -110,6 +116,7 @@ const CardGlow = () => {
               )`
                 }}
                 className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-100 transition-opacity">
+
                 <div
                     className={cn(
                         "glow",
@@ -123,6 +130,7 @@ const CardGlow = () => {
                         "after:[mask-image:linear-gradient(#0000,#0000),conic-gradient(from_calc((var(--start)-var(--spread))*1deg),#00000000_0deg,#fff,#00000000_calc(var(--spread)*2deg))]"
                     )} />
             </div>
+
         </>
     )
 }

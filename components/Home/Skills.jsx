@@ -45,7 +45,7 @@ const Skills = () => {
     return (
         <div
             ref={containerRef}
-            className='relative h-full w-full flex flex-col justify-center items-center overflow-hidden bg-black'>
+            className='relative h-full min-h-[100dvh] w-full flex flex-col justify-center items-center overflow-hidden bg-black'>
 
             <motion.div
                 className="absolute inset-0 z-0"

@@ -1,56 +1,15 @@
-import React, { memo, useEffect, useRef, useState } from 'react'
+import React, { memo } from 'react'
 import { LinkPreview } from '../Effects/LinkPreview'
 import { motion } from 'motion/react'
 import Heading from '../Reuse/Heading'
 
 const About = () => {
 
-    const [particles, setParticles] = useState([])
-
-    const containerRef = useRef(null)
-
-    useEffect(() => {
-        const newParticles = Array.from({ length: 50 }, (_, i) => ({
-            id: i,
-            x: Math.random() * window.innerWidth,
-            y: Math.random() * window.innerHeight,
-            size: Math.random() * 4 + 1,
-            opacity: Math.random() * 0.5 + 0.1, speed: Math.random() * 2 + 0.5,
-        }))
-        setParticles(newParticles)
-    }, [])
-
     return (
         <div
-            ref={containerRef}
-            className='relative h-full min-h-[100dvh] w-full flex flex-col justify-center items-center bg-black'>
+            className='relative h-full min-h-[100dvh] w-full flex flex-col justify-center items-center bg-black overflow-hidden'>
 
-            {particles.map((particle) => (
-                <motion.div
-                    key={particle.id}
-                    className="absolute w-1 h-1 bg-[#082A3A] rounded-full"
-                    initial={{
-                        x: particle.x,
-                        y: particle.y,
-                        opacity: particle.opacity,
-                    }}
-                    animate={{
-                        y: [particle.y, particle.y - 100, particle.y],
-                        opacity: [particle.opacity, particle.opacity * 2, particle.opacity],
-                    }}
-                    transition={{
-                        duration: particle.speed * 4,
-                        repeat: Number.POSITIVE_INFINITY,
-                        ease: "easeInOut",
-                    }}
-                    style={{
-                        width: particle.size,
-                        height: particle.size,
-                    }}
-                />
-            ))}
-
-            <div className="z-30 flex flex-col justify-between items-center gap-20 w-full h-full max-w-6xl m-auto p-6">
+            <div className="z-30 flex flex-col justify-between items-center gap-20 w-full h-full max-w-3xl xl:max-w-6xl m-auto p-6">
 
                 <Heading name="The Intro" />
 

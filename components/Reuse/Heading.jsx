@@ -10,7 +10,7 @@ const Heading = ({ name }) => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.7, ease: 'easeOut' }}
         >
-            <h1 className='text-xl md:text-4xl text-white font-heading relative z-10'>{name}</h1>
+            <h1 className='text-2xl sm:text-3xl md:text-4xl text-white font-heading relative z-10'>{name}</h1>
 
             <div className="absolute w-[85%] h-[3px] bg-primary -bottom-2 left-8 z-0"
                 style={{
