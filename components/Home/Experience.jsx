@@ -1,5 +1,5 @@
 import React, { memo, useEffect, useRef, useState } from "react"
-import { progressData } from "@/data/ProgressData"
+import { progressData } from "@/data/progress"
 import { useScroll, useTransform } from "motion/react"
 import * as m from 'motion/react-m'
 import ProgressBar from "../Effects/ProgressBar"

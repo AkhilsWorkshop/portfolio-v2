@@ -51,7 +51,7 @@ const Footer = () => {
                     animate={{ y: [-2, 2, -2] }}
                     transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}>
 
-                    <FaArrowUp className="w-6 h-6 text-gray-300" />
+                    <FaArrowUp className="w-6 h-6 text-gray-300 cursor-pointer" />
 
                 </m.div>
 

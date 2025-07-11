@@ -1,6 +1,6 @@
 import React, { memo, useState, useRef, useEffect } from 'react'
 import CardShine from '../Effects/CardShine'
-import { skills } from '@/data/SkillsData'
+import { skills } from '@/data/skills'
 import { useScroll, useTransform } from 'motion/react'
 import * as m from 'motion/react-m'
 import Heading from '../Reuse/Heading'

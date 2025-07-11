@@ -14,14 +14,14 @@ export const progressData = [
     },
     {
         title: "Freelance",
-        date: "Jan 2018 - Aug 2021",
+        date: "Jan 2020 - Feb 2021",
         shortDescription: "Full Stack Developer",
-        fullDescription: "Developed custom web solutions for small businesses, focusing on responsive design and user experience. Gained hands-on experience with modern web technologies and client management.",
+        fullDescription: "I partnered with a local pharmacy during COVID-19 to launch an online contactless ordering app, increasing sales by 95% and shifting over 300 daily in-person visits to online orders. The platform enabled safer access to medicines, reduced manual work for staff by 50% through automated notifications and payments, and achieved top performance scores for a seamless customer experience.",
         tech: [
             "JavaScript",
             "React",
             "Tailwind CSS",
-            "Github"
+            "Node.js"
         ]
     },
     {
