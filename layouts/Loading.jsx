@@ -10,24 +10,11 @@ const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 const Loading = ({ children }) => {
 
     const [isLoading, setIsLoading] = useState(true)
-    const [loadingProgress, setLoadingProgress] = useState(0)
     const [showTransition, setShowTransition] = useState(false)
 
     useEffect(() => {
 
         let progressInterval
-
-        const startProgress = () => {
-            progressInterval = setInterval(() => {
-                setLoadingProgress((prev) => {
-                    if (prev >= 90) {
-                        clearInterval(progressInterval)
-                        return prev
-                    }
-                    return prev + Math.random() * 15
-                })
-            }, 100)
-        }
 
         const handleCompleteLoad = () => {
 
@@ -35,21 +22,17 @@ const Loading = ({ children }) => {
 
                 if (document.readyState === "complete") {
 
-                    setLoadingProgress(100)
-
                     setTimeout(() => {
                         setShowTransition(true)
                     }, 500)
 
                     setTimeout(() => {
                         setIsLoading(false)
-                    }, 1500)
+                    }, 600)
 
                 } else {
 
                     const onLoad = () => {
-
-                        setLoadingProgress(100)
 
                         setTimeout(() => {
                             setShowTransition(true)
@@ -57,15 +40,13 @@ const Loading = ({ children }) => {
 
                         setTimeout(() => {
                             setIsLoading(false)
-                        }, 1500)
+                        }, 600)
                     }
 
                     window.addEventListener("load", onLoad, { once: true })
 
                 }
             }
-
-            startProgress()
 
             if (document.readyState === "loading") {
                 document.addEventListener("DOMContentLoaded", checkComplete)
@@ -96,29 +77,21 @@ const Loading = ({ children }) => {
                         transition={{ duration: 0.8 }}>
 
                         <m.div
-                            className="relative z-10"
-                            initial={{ scale: 0, opacity: 0 }}
-                            animate={{
-                                scale: 1,
-                                opacity: 1,
-                                y: showTransition ? -1000 : 0,
+                            transition={{
+                                duration: showTransition ? 0 : 4,
+                                repeat: showTransition ? 0 : Number.POSITIVE_INFINITY,
+                                ease: "easeInOut",
                             }}
-                            transition={{ duration: showTransition ? 1 : 0.8, ease: "easeOut" }}>
+                            exit={{
+                                opacity: 1,
+                                y: 0,
+                                scale: 1,
+                                filter: 'blur(20px)',
+                                transition: { duration: 0.9, delay: 0.1, type: 'spring', bounce: 0.3 }
+                            }}
+                            className="relative z-10">
 
-                            <m.div
-                                animate={{
-                                    y: showTransition ? 0 : [-8, 8, -8],
-                                    rotate: showTransition ? 0 : [0, 3, -3, 0],
-                                }}
-                                transition={{
-                                    duration: showTransition ? 0 : 4,
-                                    repeat: showTransition ? 0 : Number.POSITIVE_INFINITY,
-                                    ease: "easeInOut",
-                                }} >
-
-                                <Logo size="lg" layoutId="main-logo" />
-
-                            </m.div>
+                            <Logo size="lg" layoutId="main-logo" />
 
                         </m.div>
 

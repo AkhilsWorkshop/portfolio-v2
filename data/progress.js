@@ -16,7 +16,7 @@ export const progressData = [
         title: "Freelance",
         date: "Jan 2020 - Feb 2021",
         shortDescription: "Full Stack Developer",
-        fullDescription: "I partnered with a local pharmacy during COVID-19 to launch an online contactless ordering app, increasing sales by 95% and shifting over 300 daily in-person visits to online orders. The platform enabled safer access to medicines, reduced manual work for staff by 50% through automated notifications and payments, and achieved top performance scores for a seamless customer experience.",
+        fullDescription: "I partnered with a local pharmacy during COVID-19 to launch an online contactless ordering app, shifting over 300 daily in-person visits to online orders. The platform enabled safer access to medicines, reduced manual work for staff through automated notifications and payments, and achieved top performance scores for a seamless customer experience.",
         tech: [
             "JavaScript",
             "React",

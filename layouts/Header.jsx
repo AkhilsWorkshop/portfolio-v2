@@ -29,8 +29,7 @@ const Header = ({ isVisible = false, isScrolled = false }) => {
                             className="flex items-center space-x-3"
                             initial={{ opacity: 0, x: -20 }}
                             animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -20 }}
-                            transition={{ delay: 0.2 }}
-                        >
+                            transition={{ delay: 0.2 }}>
 
                             <Logo size="sm" layoutId="header-logo" />
 
@@ -40,8 +39,7 @@ const Header = ({ isVisible = false, isScrolled = false }) => {
                             className="flex space-x-4 md:space-x-8"
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 20 }}
-                            transition={{ delay: 0.3 }}
-                        >
+                            transition={{ delay: 0.3 }}>
 
                             <a
                                 href="https://github.com/AkhilsWorkshop"

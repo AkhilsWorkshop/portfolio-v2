@@ -43,7 +43,7 @@ const ProgressBar = ({ data }) => {
 
                 setTimeout(() => {
                     setAnimateResumeButton(true)
-                }, 300)
+                }, 200)
             }
         })
 
@@ -88,11 +88,12 @@ const ProgressBar = ({ data }) => {
                                     delay: index * 0.2,
                                     ease: "easeOut",
                                     x: { duration: 0.6, delay: 0.8 }
-                                }} viewport={{ once: true, margin: "-40% 0px -40% 0px" }}
-                            >
+                                }} viewport={{ once: true, margin: "-40% 0px -40% 0px" }}>
+
                                 <div className="hidden md:flex w-full items-center">
 
                                     {isLeft ? (
+
                                         <>
                                             <div className="w-5/12 pr-8">
 
@@ -100,8 +101,7 @@ const ProgressBar = ({ data }) => {
                                                     className="relative p-6 rounded-xl bg-gradient-to-br from-gray-900/20 to-gray-950/20 border-2 border-gray-800/30 backdrop-blur-sm shadow-xl"
                                                     transition={{
                                                         duration: 0.3
-                                                    }}
-                                                >
+                                                    }}>
 
                                                     <CardGlow
                                                         spread={40}

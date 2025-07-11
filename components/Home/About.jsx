@@ -81,8 +81,8 @@ const About = () => {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.4 }}
-                        variants={{}}
-                    >
+                        variants={{}}>
+
                         <m.div
                             variants={{
                                 hidden: { opacity: 0, y: 60, scale: 0.95, filter: 'blur(8px)' },
@@ -90,9 +90,8 @@ const About = () => {
                                     opacity: 1, y: 0, scale: 1, filter: 'blur(0px)',
                                     transition: { duration: 0.9, delay: 0.1, type: 'spring', bounce: 0.3 }
                                 }
-                            }}
-                        >
-                            <span>I'm Akhil Harikumar, a full-stack software developer with a passion for building clean, performant, and user-focused applications. I enjoy working across the stack—bringing together beautiful front-end interfaces with robust backend systems—and I love blending technical precision with thoughtful design.{" "}</span>
+                            }}>
+                            <span>I'm Akhil Harikumar, a full stack software developer with a passion for building clean, performant, and user-centric applications. I enjoy working across the stack, bringing together beautiful frontend interfaces with robust backend systems.{" "}</span>
                         </m.div>
 
                         <m.div
@@ -102,8 +101,7 @@ const About = () => {
                                     opacity: 1, y: 0, scale: 1, filter: 'blur(0px)',
                                     transition: { duration: 1.1, delay: 0.5, type: 'spring', bounce: 0.3 }
                                 }
-                            }}
-                        >
+                            }}>
                             <span>
                                 Currently, I'm a Software Engineer at{" "}
                             </span>
@@ -111,7 +109,7 @@ const About = () => {
                                 url="https://gye.band/artistportal"
                                 previewURL="https://artistportal.gye.band/artistportal/login"
                                 urlName="Groovin' You Entertainment" />
-                            <span>, where I help develop and maintain a portal for musicians to manage their gigs. From venues & itineraries to setlists & repertoire management, I work on creating tools that streamline every aspect of a musician's workflow. Whether it's crafting seamless UI experiences or architecting backend features, I care deeply about building software that's both functional and enjoyable to use.
+                            <span>, where I help develop and maintain multiple portals that allow management, musicians and crew to manage their gigs. From venues & itineraries to setlists & repertoire management, I work on creating tools that streamline every aspect of an artist's workflow. Whether it's crafting seamless UI experiences or architecting backend features, I care deeply about building software that's both functional and enjoyable to use.
                             </span>
                         </m.div>
 
@@ -122,15 +120,14 @@ const About = () => {
                                     opacity: 1, y: 0, scale: 1, filter: 'blur(0px)',
                                     transition: { duration: 1.3, delay: 0.9, type: 'spring', bounce: 0.3 }
                                 }
-                            }}
-                        >
+                            }}>
                             <span>
                                 I completed my Master's in Computer Science at{" "}
                             </span>
                             <LinkPreview
                                 url="https://www.uta.edu/"
                                 urlName="The University of Texas at Arlington" />
-                            <span>, where I deepened my understanding of modern software systems. Some of the courses I took include Cloud Computing, Python Programming, Software Engineering, Database Systems, and Web Data Management—each of which shaped my approach to building scalable, maintainable, and efficient software.
+                            <span>, where I deepened my understanding of modern software systems. Some of the courses I took include Cloud Computing, Python Programming, Software Engineering, Database Systems and Web Data Management each of which shaped my approach to building scalable, maintainable, and efficient software.
                             </span>
                         </m.div>
                     </m.div>
