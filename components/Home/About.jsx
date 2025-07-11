@@ -72,7 +72,7 @@ const About = () => {
 
                 </m.div>
 
-                <div className="z-30 flex flex-col justify-between items-center gap-20 w-full h-full max-w-3xl xl:max-w-6xl m-auto p-6">
+                <div className="z-30 flex flex-col justify-between items-center gap-20 w-full h-full max-w-4xl xl:max-w-6xl m-auto p-6">
 
                     <Heading name="The Intro" />
 
@@ -135,14 +135,14 @@ const About = () => {
                 </div>
 
                 <div
-                    className="absolute bottom-1/4 left-1/4 w-[600px] h-[600px] rounded-full blur-[60px]"
+                    className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[60px]"
                     style={{
                         background: 'radial-gradient(circle, rgba(34,197,94,0.2) 0%, rgba(22,163,74,0.1) 40%, transparent 100%)'
                     }}
                 />
 
                 <div
-                    className="absolute bottom-1/4 right-1/4 w-[600px] h-[600px] rounded-full blur-[60px]"
+                    className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[60px]"
                     style={{
                         background: 'radial-gradient(circle, rgba(239,68,68,0.2) 0%, rgba(220,38,38,0.1) 40%, transparent 100%)'
                     }}

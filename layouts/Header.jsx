@@ -19,7 +19,7 @@ const Header = ({ isVisible = false, isScrolled = false }) => {
                     y: isVisible ? 0 : -100,
                     opacity: isVisible ? 1 : 0,
                 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}>
+                transition={{ duration: 0.2, ease: "easeInOut" }}>
 
                 <div className="container mx-auto px-4 py-2">
 

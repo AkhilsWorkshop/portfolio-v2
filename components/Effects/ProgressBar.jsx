@@ -71,7 +71,7 @@ const ProgressBar = ({ data }) => {
                         const milestonePosition = totalItems > 1 ? index / (totalItems - 1) : 0
                         const milestoneVerticalPosition = milestonePosition * height
                         const progressBarEnd = maxProgress * height
-                        const tolerance = 20
+                        const tolerance = 5
                         const shouldActivate = progressBarEnd >= (milestoneVerticalPosition - tolerance)
 
                         return (
@@ -81,13 +81,13 @@ const ProgressBar = ({ data }) => {
                                 initial={{ opacity: 0, y: 100 }}
                                 whileInView={{
                                     opacity: 1,
-                                    y: 0, x: [0, -2, 2, -1, 1, 0],
+                                    y: 0,
                                 }}
                                 transition={{
-                                    duration: 0.8,
+                                    duration: 0.4,
                                     delay: index * 0.2,
                                     ease: "easeOut",
-                                    x: { duration: 0.6, delay: 0.8 }
+                                    x: { duration: 0.2, delay: 0.2 }
                                 }} viewport={{ once: true, margin: "-40% 0px -40% 0px" }}>
 
                                 <div className="hidden md:flex w-full items-center">
@@ -128,17 +128,18 @@ const ProgressBar = ({ data }) => {
 
                                                 <m.div
                                                     data-milestone={index}
-                                                    className={`relative z-10 w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-lg border-2 ${shouldActivate ? 'border-primary/60' : 'border-gray-600'
-                                                        }`}
-                                                    style={{
-                                                        boxShadow: shouldActivate ? "0 0 20px rgba(171,223,18,0.6)" : "0 0 0 rgba(171,223,18,0)"
-                                                    }}>
+                                                    className={`relative z-10`}>
 
                                                     <m.div
-                                                        className={`w-4 h-4 rounded-full shadow-inner ${shouldActivate ? 'bg-primary' : 'bg-gray-400'
-                                                            }`}
+                                                        className='rounded-full bg-primary'
                                                         style={{
-                                                            boxShadow: shouldActivate ? "0 0 15px rgba(171,223,18,0.8)" : "0 0 0 rgba(171,223,18,0)"
+                                                            width: '10px',
+                                                            height: '10px',
+                                                            boxShadow: shouldActivate ? "0 0 15px rgba(171,223,18,0.8)" : "0 0 0 rgba(171,223,18,0)",
+                                                        }}
+                                                        animate={{
+                                                            scale: shouldActivate ? 1.35 : 1,
+                                                            transition: { type: "spring", stiffness: 320, damping: 18 }
                                                         }}
                                                     />
 
@@ -158,17 +159,18 @@ const ProgressBar = ({ data }) => {
 
                                                 <m.div
                                                     data-milestone={index}
-                                                    className={`relative z-10 w-10 h-10 rounded-full bg-black flex items-center justify-center shadow-lg border-2 ${shouldActivate ? 'border-primary/60' : 'border-gray-600'
-                                                        }`}
-                                                    style={{
-                                                        boxShadow: shouldActivate ? "0 0 20px rgba(171,223,18,0.6)" : "0 0 0 rgba(171,223,18,0)"
-                                                    }}>
+                                                    className={`relative z-10`}>
 
                                                     <m.div
-                                                        className={`w-4 h-4 rounded-full shadow-inner ${shouldActivate ? 'bg-primary' : 'bg-gray-400'
-                                                            }`}
+                                                        className='rounded-full bg-primary'
                                                         style={{
-                                                            boxShadow: shouldActivate ? "0 0 15px rgba(171,223,18,0.8)" : "0 0 0 rgba(171,223,18,0)"
+                                                            width: '10px',
+                                                            height: '10px',
+                                                            boxShadow: shouldActivate ? "0 0 15px rgba(171,223,18,0.8)" : "0 0 0 rgba(171,223,18,0)",
+                                                        }}
+                                                        animate={{
+                                                            scale: shouldActivate ? 1.35 : 1,
+                                                            transition: { type: "spring", stiffness: 320, damping: 18 }
                                                         }}
                                                     />
 
@@ -219,17 +221,18 @@ const ProgressBar = ({ data }) => {
 
                                             <m.div
                                                 data-milestone={index}
-                                                className={`w-8 h-8 rounded-full bg-black flex items-center justify-center shadow-lg border-2 ${shouldActivate ? 'border-primary/60' : 'border-gray-600'
-                                                    }`}
-                                                style={{
-                                                    boxShadow: shouldActivate ? "0 0 15px rgba(171,223,18,0.6)" : "0 0 0 rgba(171,223,18,0)"
-                                                }}>
+                                                className={`relative z-10`}>
 
                                                 <m.div
-                                                    className={`w-3 h-3 rounded-full shadow-inner ${shouldActivate ? 'bg-primary' : 'bg-gray-400'
-                                                        }`}
+                                                    className='rounded-full bg-primary'
                                                     style={{
-                                                        boxShadow: shouldActivate ? "0 0 10px rgba(171,223,18,0.8)" : "0 0 0 rgba(171,223,18,0)"
+                                                        width: '10px',
+                                                        height: '10px',
+                                                        boxShadow: shouldActivate ? "0 0 15px rgba(171,223,18,0.8)" : "0 0 0 rgba(171,223,18,0)",
+                                                    }}
+                                                    animate={{
+                                                        scale: shouldActivate ? 1.35 : 1,
+                                                        transition: { type: "spring", stiffness: 320, damping: 18 }
                                                     }}
                                                 />
 
@@ -266,9 +269,7 @@ const ProgressBar = ({ data }) => {
                     })}
 
                     <div
-                        style={{
-                            height: height + "px",
-                        }}
+                        style={{ height: height + "px" }}
                         className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 w-[2px] bg-gradient-to-b from-transparent via-gray-800/30 to-transparent">
 
                         <m.div
@@ -286,22 +287,6 @@ const ProgressBar = ({ data }) => {
                                 }}
                             />
 
-                            {Array.from({ length: 3 }, (_, i) => (
-                                <m.div
-                                    key={`energy-wave-${i}`}
-                                    className="absolute w-full h-3 bg-gradient-to-b from-transparent via-white/30 to-transparent"
-                                    animate={{
-                                        y: ["100%", "-100%"]
-                                    }}
-                                    transition={{
-                                        duration: 2 + i * 0.5,
-                                        repeat: Number.POSITIVE_INFINITY,
-                                        delay: i * 0.7,
-                                        ease: "linear"
-                                    }}
-                                />
-                            ))}
-
                         </m.div>
 
                         <m.div
@@ -311,7 +296,7 @@ const ProgressBar = ({ data }) => {
                             }}
                             className="absolute left-1/2 transform -translate-x-1/2 -translate-y-1/2">
 
-                            <div className="w-2 h-2 bg-primary rounded-full shadow-lg"
+                            <div className="w-1 h-1 bg-primary rounded-full shadow-lg"
                                 style={{
                                     boxShadow: "0 0 8px rgba(171,223,18,0.8), 0 0 16px rgba(171,223,18,0.4)"
                                 }}
@@ -319,48 +304,11 @@ const ProgressBar = ({ data }) => {
 
                         </m.div>
 
-                        {Array.from({ length: 15 }, (_, i) => {
-
-                            const particleSize = Math.random() * 1.5 + 0.5
-                            const particleOpacity = Math.random() * 0.4 + 0.4
-                            const particleColor = i % 3 === 0 ? 'bg-primary/60' : i % 3 === 1 ? 'bg-blue-400/40' : 'bg-cyan-300/50'
-
-                            return (
-                                <m.div
-                                    key={`desktop-particle-${i}`}
-                                    className={`absolute rounded-full ${particleColor}`}
-                                    style={{
-                                        left: `${-3 + (Math.random() * 10 - 5)}px`,
-                                        top: `${i * (height / 15) + Math.random() * 25}px`,
-                                        width: `${particleSize}px`,
-                                        height: `${particleSize}px`,
-                                        opacity: (maxProgress * height) >= (i * (height / 15)) ? particleOpacity : 0,
-                                        boxShadow: (maxProgress * height) >= (i * (height / 15)) ?
-                                            `0 0 ${particleSize * 3}px rgba(171,223,18,0.5)` : 'none'
-                                    }}
-                                    animate={{
-                                        y: [0, -15, 0],
-                                        x: [0, Math.random() * 8 - 4, 0],
-                                        scale: [0.8, 1.3, 0.8],
-                                        rotate: [0, 360]
-                                    }}
-                                    transition={{
-                                        duration: 2.5 + Math.random() * 2,
-                                        repeat: Number.POSITIVE_INFINITY,
-                                        delay: Math.random() * 3,
-                                        ease: "easeInOut",
-                                    }}
-                                />
-                            )
-                        })}
-
                     </div>
 
                     <div
-                        style={{
-                            height: height + "px",
-                        }}
-                        className="md:hidden absolute left-8 top-0 w-[2px] bg-gradient-to-b from-transparent via-gray-800/30 to-transparent">
+                        style={{ height: height + "px" }}
+                        className="md:hidden absolute left-5 top-0 w-[2px] bg-gradient-to-b from-transparent via-gray-800/30 to-transparent">
 
                         <m.div
                             style={{
@@ -376,22 +324,6 @@ const ProgressBar = ({ data }) => {
                                     background: "linear-gradient(180deg, rgba(171,223,18,1) 0%, rgba(171,223,18,0.8) 50%, rgba(171,223,18,0.6) 100%)"
                                 }}
                             />
-
-                            {Array.from({ length: 2 }, (_, i) => (
-                                <m.div
-                                    key={`mobile-energy-wave-${i}`}
-                                    className="absolute w-full h-2 bg-gradient-to-b from-transparent via-white/30 to-transparent"
-                                    animate={{
-                                        y: ["100%", "-100%"]
-                                    }}
-                                    transition={{
-                                        duration: 2.5 + i * 0.5,
-                                        repeat: Number.POSITIVE_INFINITY,
-                                        delay: i * 0.8,
-                                        ease: "linear"
-                                    }}
-                                />
-                            ))}
 
                         </m.div>
 
@@ -409,41 +341,6 @@ const ProgressBar = ({ data }) => {
                             />
 
                         </m.div>
-
-                        {Array.from({ length: 12 }, (_, i) => {
-
-                            const particleSize = Math.random() * 1.2 + 0.4
-                            const particleOpacity = Math.random() * 0.3 + 0.4
-                            const particleColor = i % 3 === 0 ? 'bg-primary/60' : i % 3 === 1 ? 'bg-blue-400/40' : 'bg-cyan-300/50'
-
-                            return (
-                                <m.div
-                                    key={`mobile-particle-${i}`}
-                                    className={`absolute rounded-full ${particleColor}`}
-                                    style={{
-                                        left: `${-2 + (Math.random() * 8 - 4)}px`,
-                                        top: `${i * (height / 12) + Math.random() * 20}px`,
-                                        width: `${particleSize}px`,
-                                        height: `${particleSize}px`,
-                                        opacity: (maxProgress * height) >= (i * (height / 12)) ? particleOpacity : 0,
-                                        boxShadow: (maxProgress * height) >= (i * (height / 12)) ?
-                                            `0 0 ${particleSize * 2}px rgba(171,223,18,0.4)` : 'none'
-                                    }}
-                                    animate={{
-                                        y: [0, -12, 0],
-                                        x: [0, Math.random() * 6 - 3, 0],
-                                        scale: [0.7, 1.2, 0.7],
-                                        rotate: [0, 360]
-                                    }}
-                                    transition={{
-                                        duration: 2 + Math.random() * 1.8,
-                                        repeat: Number.POSITIVE_INFINITY,
-                                        delay: Math.random() * 2.5,
-                                        ease: "easeInOut",
-                                    }}
-                                />
-                            )
-                        })}
 
                     </div>
 
