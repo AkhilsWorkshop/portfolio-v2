@@ -25,21 +25,13 @@ const Header = ({ isVisible = false, isScrolled = false }) => {
 
                     <nav className="flex justify-between items-center">
 
-                        <m.div
-                            className="flex items-center space-x-3"
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : -20 }}
-                            transition={{ delay: 0.2 }}>
+                        <div className="flex items-center space-x-3">
 
                             <Logo size="sm" layoutId="header-logo" />
 
-                        </m.div>
+                        </div>
 
-                        <m.div
-                            className="flex space-x-4 md:space-x-8"
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: isVisible ? 1 : 0, x: isVisible ? 0 : 20 }}
-                            transition={{ delay: 0.3 }}>
+                        <div className="flex space-x-4 md:space-x-8">
 
                             <a
                                 href="https://github.com/AkhilsWorkshop"
@@ -57,7 +49,7 @@ const Header = ({ isVisible = false, isScrolled = false }) => {
                                 <AiFillLinkedin className="h-6 md:h-8 w-6 md:w-8 duration-300 text-white hover:text-primary hover:scale-110" />
                             </a>
 
-                        </m.div>
+                        </div>
 
                     </nav>
 

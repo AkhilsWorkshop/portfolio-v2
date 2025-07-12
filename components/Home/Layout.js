@@ -1,21 +1,43 @@
 "use client"
 
-import About from "./About"
-import Experience from "./Experience"
-import Skills from "./Skills"
 import Hero from "./Hero"
 import Loading from "@/layouts/Loading"
-import Footer from "@/layouts/Footer"
+import LoadingSpinner from "@/layouts/LoadingSpinner"
+import { Suspense, lazy } from "react"
+
+const About = lazy(() => import("./About"))
+const Experience = lazy(() => import("./Experience"))
+const Projects = lazy(() => import("./Projects"))
+const Toolkit = lazy(() => import("./Toolkit"))
+const Footer = lazy(() => import("@/layouts/Footer"))
 
 const Layout = () => {
 
     return (
         <Loading>
+
             <Hero />
-            <About />
-            <Experience />
-            <Skills />
-            <Footer />
+
+            <Suspense fallback={<LoadingSpinner />}>
+                <About />
+            </Suspense>
+
+            <Suspense fallback={<LoadingSpinner />}>
+                <Experience />
+            </Suspense>
+
+            <Suspense fallback={<LoadingSpinner />}>
+                <Projects />
+            </Suspense>
+
+            <Suspense fallback={<LoadingSpinner />}>
+                <Toolkit />
+            </Suspense>
+
+            <Suspense fallback={<LoadingSpinner />}>
+                <Footer />
+            </Suspense>
+
         </Loading>
     )
 }
