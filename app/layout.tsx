@@ -21,7 +21,11 @@ export const metadata = {
   description: "Full Stack Developer | Passionate about building clean, performant, and user-focused applications",
 }
 
-export default function RootLayout({ children }) {
+type RootLayoutProps = {
+  children: React.ReactNode
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className={`${rockSalt.className} ${orbitron.className} ${exo2.className}`}>
       <body className='antialiased'>

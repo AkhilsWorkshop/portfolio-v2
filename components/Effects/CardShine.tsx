@@ -2,10 +2,16 @@ import Image from "next/image"
 import { memo, useRef } from "react"
 import ImageSaveWrapper from "../Reuse/ImageSaveWrapper"
 
-const CardShine = ({ techSrc, techName, techClassName }) => {
+type CardShineProps = {
+    techSrc: string,
+    techName: string,
+    techClassName?: string
+}
+
+const CardShine = ({ techSrc, techName, techClassName }: CardShineProps) => {
 
     const isPointerInside = useRef(false)
-    const refElement = useRef(null)
+    const refElement = useRef<HTMLDivElement>(null)
 
     const state = useRef({
         glare: {
@@ -22,19 +28,19 @@ const CardShine = ({ techSrc, techName, techClassName }) => {
         },
     })
 
-    const containerStyle = {
-        "--m-x": "50%",
-        "--m-y": "50%",
-        "--r-x": "0deg",
-        "--r-y": "0deg",
-        "--bg-x": "50%",
-        "--bg-y": "50%",
-        "--duration": "300ms",
-        "--foil-size": "100%",
-        "--opacity": "0",
-        "--radius": "5px",
-        "--easing": "ease",
-        "--transition": "var(--duration) var(--easing)"
+    const containerStyle: React.CSSProperties = {
+        ["--m-x" as any]: "50%",
+        ["--m-y" as any]: "50%",
+        ["--r-x" as any]: "0deg",
+        ["--r-y" as any]: "0deg",
+        ["--bg-x" as any]: "50%",
+        ["--bg-y" as any]: "50%",
+        ["--duration" as any]: "300ms",
+        ["--foil-size" as any]: "100%",
+        ["--opacity" as any]: "0",
+        ["--radius" as any]: "5px",
+        ["--easing" as any]: "ease",
+        ["--transition" as any]: "var(--duration) var(--easing)"
     }
 
     const backgroundStyle = {
@@ -62,6 +68,7 @@ const CardShine = ({ techSrc, techName, techClassName }) => {
             className="relative isolate [contain:layout_style] [perspective:150px] transition-transform duration-[var(--duration)] ease-[var(--easing)] delay-[var(--delay)] will-change-transform w-[120px] "
             ref={refElement}
             onPointerMove={(event) => {
+
                 const rotateFactor = 0.4
                 const rect = event.currentTarget.getBoundingClientRect()
                 const position = {

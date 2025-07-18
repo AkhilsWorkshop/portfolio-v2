@@ -8,11 +8,20 @@ import { LazyMotion } from "motion/react"
 
 const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
+type ParticlesProps = {
+    id: number,
+    x: number,
+    y: number,
+    size: number,
+    opacity: number,
+    animationDelay: number
+}
+
 const Toolkit = () => {
 
     const containerRef = useRef(null)
 
-    const [particles, setParticles] = useState([])
+    const [particles, setParticles] = useState<ParticlesProps[]>([])
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -44,7 +53,7 @@ const Toolkit = () => {
         delay: Math.random() * 3
     })))
 
-    const [hoveredIndex, setHoveredIndex] = useState(null)
+    const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
 
     return (
         <LazyMotion features={loadFeatures}>

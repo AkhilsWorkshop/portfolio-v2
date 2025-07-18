@@ -7,7 +7,11 @@ import * as m from 'motion/react-m'
 
 const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
-const Loading = ({ children }) => {
+type LoadingProps = {
+    children: React.ReactNode
+}
+
+const Loading = ({ children }: LoadingProps) => {
 
     const [isLoading, setIsLoading] = useState(true)
     const [showTransition, setShowTransition] = useState(false)
@@ -86,7 +90,7 @@ const Loading = ({ children }) => {
                                 opacity: 1,
                                 y: 0,
                                 scale: 1,
-                                filter: 'blur(20px)',
+                                filter: 'blur(5px)',
                                 transition: { duration: 0.9, delay: 0.1, type: 'spring', bounce: 0.3 }
                             }}
                             className="relative z-10">

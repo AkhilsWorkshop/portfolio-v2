@@ -28,7 +28,7 @@ export const progressData = [
         title: "University of Texas at Arlington",
         date: "Aug 2021 - May 2023",
         shortDescription: "Master of Science - Computer Science",
-        fullDescription: "I did my Master's in Computer Science with a focus on Cloud Computing and Database Systems. Studied Web Management, Python, and Algorithms, building a strong technical foundation for my development work.",
+        fullDescription: "I did my Master's in Computer Science with a focus on Cloud Computing and Database Systems. Studied Web Management, Python and Algorithms, building a strong technical foundation for my development work.",
         links: [
             {
                 label: "AWS Certified Cloud Practitioner",

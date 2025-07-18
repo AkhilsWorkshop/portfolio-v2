@@ -9,10 +9,19 @@ import Heading from "../Reuse/Heading"
 
 const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
+type ParticlesProps = {
+    id: number,
+    x: number,
+    y: number,
+    size: number,
+    opacity: number,
+    animationDelay: number
+}
+
 const Experience = () => {
 
     const containerRef = useRef(null)
-    const [particles, setParticles] = useState([])
+    const [particles, setParticles] = useState<ParticlesProps[]>([])
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -43,6 +52,7 @@ const Experience = () => {
         .map((item, index) => {
             return (
                 <m.div
+                    key={index}
                     className="flex flex-col gap-6 relative h-full p-2"
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -64,7 +74,7 @@ const Experience = () => {
                         </p>
                     )}
 
-                    {item?.links?.length > 0 && (
+                    {Array.isArray(item?.links) && item.links.length > 0 && (
 
                         <div className="flex flex-wrap gap-3 text-sm text-gray-400">
 

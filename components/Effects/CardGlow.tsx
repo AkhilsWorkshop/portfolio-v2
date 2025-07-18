@@ -6,11 +6,11 @@ import { animate } from "motion/react"
 
 const CardGlow = () => {
 
-    const containerRef = useRef(null)
+    const containerRef = useRef<HTMLDivElement>(null)
     const lastPosition = useRef({ x: 0, y: 0 })
     const animationFrameRef = useRef(0)
 
-    const handleMove = useCallback((e) => {
+    const handleMove = useCallback((e: MouseEvent | undefined) => {
 
         if (!containerRef.current) return
 
@@ -69,8 +69,8 @@ const CardGlow = () => {
 
     useEffect(() => {
 
-        const handleScroll = () => handleMove()
-        const handlePointerMove = (e) => handleMove(e)
+        const handleScroll = () => handleMove(undefined)
+        const handlePointerMove = (e: MouseEvent) => handleMove(e)
 
         window.addEventListener("scroll", handleScroll, { passive: true })
         document.body.addEventListener("pointermove", handlePointerMove, {
@@ -105,16 +105,16 @@ const CardGlow = () => {
                     "--glowingeffect-border-width": `2px`,
                     "--repeating-conic-gradient-times": "5",
                     "--gradient": `radial-gradient(circle, #ABDF12 40%, #5ce3cc 100%),
-              radial-gradient(circle at 40% 40%, #ABDF12 30%, #5ce3cc 70%),
-              radial-gradient(circle at 60% 60%, #ABDF12 40%, #5ce3cc 100%), 
-              radial-gradient(circle at 40% 60%, #ABDF12 40%, #5ce3cc 100%),
-              repeating-conic-gradient(
-                from 236.84deg at 50% 50%,
-                #ABDF12 0%,
-                #5ce3cc 50%,
-                #ABDF12 100%
-              )`
-                }}
+                                    radial-gradient(circle at 40% 40%, #ABDF12 30%, #5ce3cc 70%),
+                                    radial-gradient(circle at 60% 60%, #ABDF12 40%, #5ce3cc 100%), 
+                                    radial-gradient(circle at 40% 60%, #ABDF12 40%, #5ce3cc 100%),
+                                    repeating-conic-gradient(
+                                            from 236.84deg at 50% 50%,
+                                            #ABDF12 0%,
+                                            #5ce3cc 50%,
+                                            #ABDF12 100%
+                    )`
+                } as React.CSSProperties}
                 className="pointer-events-none absolute inset-0 rounded-[inherit] opacity-100 transition-opacity">
 
                 <div

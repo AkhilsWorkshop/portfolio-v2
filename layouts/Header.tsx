@@ -8,7 +8,12 @@ import { LazyMotion } from "motion/react"
 
 const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
-const Header = ({ isVisible = false, isScrolled = false }) => {
+type HeaderProps = {
+    isVisible?: boolean,
+    isScrolled?: boolean
+}
+
+const Header = ({ isVisible = false, isScrolled = false }: HeaderProps) => {
     return (
         <LazyMotion features={loadFeatures}>
 

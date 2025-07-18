@@ -7,7 +7,7 @@ export const projectsData = [
         desktopImage: "/projects/movie-home/Desktop.png",
         mobileImage: "/projects/movie-home/Mobile.png",
         desc: "A web app for getting information about Movies, TV shows and much more. Feeling bored? You can discover trending TV Shows and movies. Get cast, crew, popularity, release date, trailer and much more for Movies & TV shows. Get details about cast/crew members and discover other movies they have worked on.",
-        tags: ["React", "Tailwind CSS", "Headless UI", "Github"],
+        tags: ["React", "Tailwind CSS", "Firebase", "Headless UI", "Github"],
         url: "https://movie-home.akhilkumar.dev/",
         github: "https://github.com/AkhilsWorkshop/Movie-Home",
     },

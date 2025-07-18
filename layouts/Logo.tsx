@@ -8,7 +8,12 @@ import { LazyMotion } from "motion/react"
 
 const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
-const Logo = ({ size = "md", layoutId = "main-logo" }) => {
+type LogoProps = {
+    size?: "sm" | "md" | "lg"
+    layoutId?: string
+}
+
+const Logo = ({ size = "md", layoutId = "main-logo" }: LogoProps) => {
 
     const sizeClasses = {
         sm: 48,
@@ -33,8 +38,8 @@ const Logo = ({ size = "md", layoutId = "main-logo" }) => {
                         priority
                         src="/images/logo.webp"
                         alt="AK Logo"
-                        width={sizeClasses[size]}
-                        height={sizeClasses[size]}
+                        width={sizeClasses[size] as number}
+                        height={sizeClasses[size] as number}
                         className={`disableSave z-100 shrink-0 ${imageClasses[size]}`}
                     />
 

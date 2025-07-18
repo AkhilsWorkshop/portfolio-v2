@@ -9,9 +9,18 @@ import Heading from "../Reuse/Heading"
 
 const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
+type ParticlesProps = {
+    id: number,
+    x: number,
+    y: number,
+    size: number,
+    opacity: number,
+    animationDelay: number
+}
+
 const Projects = () => {
 
-    const [particles, setParticles] = useState([])
+    const [particles, setParticles] = useState<ParticlesProps[]>([])
 
     const containerRef = useRef(null)
 

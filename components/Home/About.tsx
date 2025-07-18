@@ -7,9 +7,18 @@ import Heading from '../Reuse/Heading'
 
 const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
+type ParticlesProps = {
+    id: number,
+    x: number,
+    y: number,
+    size: number,
+    opacity: number,
+    animationDelay: number
+}
+
 const About = () => {
 
-    const [particles, setParticles] = useState([])
+    const [particles, setParticles] = useState<ParticlesProps[]>([])
 
     const containerRef = useRef(null)
 
@@ -80,49 +89,48 @@ const About = () => {
                         className='flex flex-col items-center justify-center gap-8 h-auto z-40 text-white/70'
                         initial="hidden"
                         whileInView="visible"
-                        viewport={{ once: true, amount: 0.4 }}
-                        variants={{}}>
+                        viewport={{ once: true, amount: 0.4 }}>
 
                         <m.div
                             variants={{
-                                hidden: { opacity: 0, y: 60, scale: 0.95, filter: 'blur(8px)' },
+                                hidden: { opacity: 0, y: 60, scale: 0.95, filter: 'blur(5px)' },
                                 visible: {
                                     opacity: 1, y: 0, scale: 1, filter: 'blur(0px)',
-                                    transition: { duration: 0.9, delay: 0.1, type: 'spring', bounce: 0.3 }
+                                    transition: { duration: 0.8, delay: 0.1, type: 'spring', bounce: 0.3 }
                                 }
                             }}>
-                            <span>I'm Akhil Harikumar, a full stack software developer with a passion for building clean, performant, and user-centric applications. I enjoy working across the stack, bringing together beautiful frontend interfaces with robust backend systems.{" "}</span>
+                            <span>I&apos;m Akhil Harikumar, a full stack software developer with a passion for building clean, performant, and user-centric applications. I enjoy working across the stack, bringing together beautiful frontend interfaces with robust backend systems.{" "}</span>
                         </m.div>
 
                         <m.div
                             variants={{
-                                hidden: { opacity: 0, y: 60, scale: 0.95, filter: 'blur(8px)' },
+                                hidden: { opacity: 0, y: 60, scale: 0.95, filter: 'blur(5px)' },
                                 visible: {
                                     opacity: 1, y: 0, scale: 1, filter: 'blur(0px)',
-                                    transition: { duration: 1.1, delay: 0.5, type: 'spring', bounce: 0.3 }
+                                    transition: { duration: 0.8, delay: 0.3, type: 'spring', bounce: 0.3 }
                                 }
                             }}>
                             <span>
-                                Currently, I'm a Software Engineer at{" "}
+                                Currently, I&apos;m a Software Engineer at{" "}
                             </span>
                             <LinkPreview
-                                url="https://gye.band/artistportal"
-                                previewURL="https://artistportal.gye.band/artistportal/login"
+                                url="https://gye.band"
+                                previewURL="https://www.gye.band"
                                 urlName="Groovin' You Entertainment" />
-                            <span>, where I help develop and maintain multiple portals that allow management, musicians and crew to manage their gigs. From venues & itineraries to setlists & repertoire management, I work on creating tools that streamline every aspect of an artist's workflow. Whether it's crafting seamless UI experiences or architecting backend features, I care deeply about building software that's both functional and enjoyable to use.
+                            <span>, where I help develop and maintain multiple portals that allow management, musicians and crew to manage their gigs. From venues & itineraries to setlists & repertoire management, I work on creating tools that streamline every aspect of an artist&apos;s workflow. Whether it&apos;s crafting seamless UI experiences or architecting backend features, I care deeply about building software that&apos;s both functional and enjoyable to use.
                             </span>
                         </m.div>
 
                         <m.div
                             variants={{
-                                hidden: { opacity: 0, y: 60, scale: 0.95, filter: 'blur(8px)' },
+                                hidden: { opacity: 0, y: 60, scale: 0.95, filter: 'blur(5px)' },
                                 visible: {
                                     opacity: 1, y: 0, scale: 1, filter: 'blur(0px)',
-                                    transition: { duration: 1.3, delay: 0.9, type: 'spring', bounce: 0.3 }
+                                    transition: { duration: 0.8, delay: 0.5, type: 'spring', bounce: 0.3 }
                                 }
                             }}>
                             <span>
-                                I completed my Master's in Computer Science at{" "}
+                                I completed my Master&apos;s in Computer Science at{" "}
                             </span>
                             <LinkPreview
                                 url="https://www.uta.edu/"

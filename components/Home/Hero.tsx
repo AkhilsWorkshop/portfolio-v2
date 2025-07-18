@@ -2,14 +2,14 @@
 
 import Header from "@/layouts/Header"
 import Logo from "@/layouts/Logo"
-import { useScroll, useTransform } from "motion/react"
+import { useScroll, useTransform, Variants } from "motion/react"
 import * as m from 'motion/react-m'
 import { memo, useEffect, useRef, useState } from "react"
 import { LazyMotion } from "motion/react"
 
 const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
-const CONTAINER_VARIANTS = {
+const CONTAINER_VARIANTS: Variants = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
@@ -20,7 +20,7 @@ const CONTAINER_VARIANTS = {
     },
 }
 
-const ITEM_VARIANTS = {
+const ITEM_VARIANTS: Variants = {
     hidden: { opacity: 0, y: 50 },
     visible: {
         opacity: 1,
@@ -32,7 +32,7 @@ const ITEM_VARIANTS = {
     },
 }
 
-const FLOATING_VARIANTS = {
+const FLOATING_VARIANTS: Variants = {
     animate: {
         y: [-10, 10, -10],
         rotate: [0, 5, -5, 0],
@@ -44,9 +44,18 @@ const FLOATING_VARIANTS = {
     },
 }
 
+type ParticlesProps = {
+    id: number,
+    x: number,
+    y: number,
+    size: number,
+    opacity: number,
+    animationDelay: number
+}
+
 const Hero = () => {
 
-    const [particles, setParticles] = useState([])
+    const [particles, setParticles] = useState<ParticlesProps[]>([])
 
     const containerRef = useRef(null)
 
@@ -104,7 +113,7 @@ const Hero = () => {
 
             <m.section
                 ref={containerRef}
-                className="relative h-full min-h-[100dvh] w-full flex flex-col justify-center items-center bg-black"
+                className="relative h-full min-h-[100dvh] w-full flex flex-col justify-center items-center bg-black snap-start"
                 style={{ opacity: heroOpacity }}>
 
                 <m.div
@@ -169,7 +178,7 @@ const Hero = () => {
 
                         <h1
                             className="text-xl lg:text-2xl text-white/70">
-                            Hi, I'm
+                            Hi, I&apos;m
                         </h1>
 
                         <m.h1

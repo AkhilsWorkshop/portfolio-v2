@@ -1,7 +1,12 @@
 import { cn } from '@/lib/utils'
 import { memo } from 'react'
 
-const ImageSaveWrapper = ({ children, customCSS }) => {
+type ImageSaveWrapperProps = {
+    children: React.ReactNode,
+    customCSS?: string
+}
+
+const ImageSaveWrapper = ({ children, customCSS }: ImageSaveWrapperProps) => {
     return (
         <figure className={cn('relative flex-shrink-0 z-0', customCSS)}>
             {children}

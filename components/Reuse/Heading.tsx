@@ -4,7 +4,11 @@ import { LazyMotion } from "motion/react"
 
 const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
-const Heading = ({ name }) => {
+type HeadingProps = {
+    name: string
+}
+
+const Heading = ({ name }: HeadingProps) => {
     return (
         <LazyMotion features={loadFeatures}>
 

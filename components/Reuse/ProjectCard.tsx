@@ -8,7 +8,20 @@ import CardGlow from "../Effects/CardGlow"
 
 const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
-const ProjectCard = ({ project }) => {
+type ProjectCardProps = {
+    project: {
+        id: number,
+        name: string,
+        desktopImage: string,
+        mobileImage: string,
+        desc: string,
+        tags: string[],
+        url: string,
+        github: string,
+    }
+}
+
+const ProjectCard = ({ project }: ProjectCardProps) => {
 
     return (
         <LazyMotion features={loadFeatures}>
@@ -30,9 +43,9 @@ const ProjectCard = ({ project }) => {
                         <div className="absolute inset-0 flex items-center justify-center -z-10">
 
                             <m.div
-                                initial={{ filter: 'blur(10px)' }}
+                                initial={{ filter: 'blur(5px)' }}
                                 whileInView={{ filter: 'blur(0px)' }}
-                                transition={{ duration: 1 }}
+                                transition={{ duration: 0.3 }}
                                 viewport={{ once: true, amount: 0.4 }}
                                 className="w-[70%] h-[100%] overflow-hidden">
 
@@ -57,14 +70,7 @@ const ProjectCard = ({ project }) => {
                         viewport={{ once: true, amount: 0.4 }}
                         className="relative rounded-xl bg-gradient-to-br from-gray-900/20 to-gray-950/20 border-2 border-gray-900 p-6 flex flex-col gap-6">
 
-                        <CardGlow
-                            spread={10}
-                            glow={true}
-                            disabled={false}
-                            proximity={64}
-                            inactiveZone={0.01}
-                            borderWidth={2}
-                        />
+                        <CardGlow />
 
                         <div className="space-y-2">
 
@@ -133,9 +139,9 @@ const ProjectCard = ({ project }) => {
                     <div className="absolute inset-0 flex items-center justify-center -z-10">
 
                         <m.div
-                            initial={{ filter: 'blur(10px)' }}
+                            initial={{ filter: 'blur(5px)' }}
                             whileInView={{ filter: 'blur(0px)' }}
-                            transition={{ duration: 1, delay: 0.5 }}
+                            transition={{ duration: 0.3 }}
                             viewport={{ once: true, amount: 0.4 }}
                             className="w-[75%] h-[100%] overflow-hidden rounded-[2rem]">
 

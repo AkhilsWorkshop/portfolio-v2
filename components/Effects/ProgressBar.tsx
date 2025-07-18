@@ -1,16 +1,20 @@
 "use client"
 
 import { useScroll, useTransform } from "motion/react"
-import React, { memo, useEffect, useRef, useState } from "react"
+import React, { JSX, memo, useEffect, useRef, useState } from "react"
 import CardGlow from "./CardGlow"
 import * as m from 'motion/react-m'
 import { LazyMotion } from "motion/react"
 
 const loadFeatures = () => import("@/lib/animation").then(res => res.default)
 
-const ProgressBar = ({ data }) => {
+type ProgressBarProps = {
+    data: JSX.Element[]
+}
 
-    const ref = useRef(null)
+const ProgressBar = ({ data }: ProgressBarProps) => {
+
+    const ref = useRef<HTMLDivElement>(null)
     const containerRef = useRef(null)
 
     const [height, setHeight] = useState(0)
@@ -103,14 +107,7 @@ const ProgressBar = ({ data }) => {
                                                         duration: 0.3
                                                     }}>
 
-                                                    <CardGlow
-                                                        spread={40}
-                                                        glow={true}
-                                                        disabled={false}
-                                                        proximity={64}
-                                                        inactiveZone={0.01}
-                                                        borderWidth={2}
-                                                    />
+                                                    <CardGlow />
 
                                                     <div className="absolute inset-0 opacity-10">
                                                         <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:40px_40px]" />
@@ -186,14 +183,7 @@ const ProgressBar = ({ data }) => {
                                                         duration: 0.3
                                                     }}>
 
-                                                    <CardGlow
-                                                        spread={40}
-                                                        glow={true}
-                                                        disabled={false}
-                                                        proximity={64}
-                                                        inactiveZone={0.01}
-                                                        borderWidth={2}
-                                                    />
+                                                    <CardGlow />
 
                                                     <div className="absolute inset-0 opacity-10">
                                                         <div className="absolute inset-0 bg-[linear-gradient(rgba(171,223,18,0.3)_1px,transparent_1px),linear-gradient(90deg,rgba(171,223,18,0.3)_1px,transparent_1px)] bg-[size:40px_40px]" />
