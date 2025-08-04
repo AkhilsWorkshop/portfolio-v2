@@ -110,7 +110,7 @@ const Experience = () => {
                             {item.tech.map((tech, index) => (
                                 <p
                                     key={index}
-                                    className="rounded-md px-2 py-1 text-xs bg-[#0a302c] text-[#5ce3cc]  transition-colors duration-200 inline-flex items-center gap-1">{tech}
+                                    className="rounded-md px-2 py-1 text-xs bg-[#0a300a86] text-primary transition-colors duration-200 inline-flex items-center gap-1">{tech}
                                 </p>
                             ))}
                         </div>
@@ -158,34 +158,6 @@ const Experience = () => {
                     ))}
 
                 </m.div>
-
-                <div
-                    className="absolute top-1/4 left-1/5 w-[600px] h-[600px] rounded-full blur-[60px]"
-                    style={{
-                        background: 'radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, rgba(37, 99, 235, 0.1) 40%, transparent 70%)'
-                    }}
-                />
-
-                <div
-                    className="absolute bottom-1/4 right-1/5 w-[500px] h-[500px] rounded-full blur-[70px]"
-                    style={{
-                        background: 'radial-gradient(circle, rgba(147, 51, 234, 0.25) 0%, rgba(126, 34, 206, 0.12) 40%, transparent 70%)'
-                    }}
-                />
-
-                <div
-                    className="absolute top-1/2 right-1/3 w-[400px] h-[400px] rounded-full blur-[50px]"
-                    style={{
-                        background: 'radial-gradient(circle, rgba(34, 211, 238, 0.18) 0%, rgba(6, 182, 212, 0.08) 40%, transparent 70%)'
-                    }}
-                />
-
-                <div
-                    className="absolute top-3/4 left-1/3 w-[300px] h-[300px] rounded-full blur-[40px]"
-                    style={{
-                        background: 'radial-gradient(circle, rgba(52, 211, 153, 0.15) 0%, rgba(16, 185, 129, 0.06) 40%, transparent 70%)'
-                    }}
-                />
 
                 <m.div style={{ y: textY }} className="relative z-30 flex flex-col justify-between items-center gap-4 w-full h-full max-w-6xl m-auto p-2 md:p-6">
 

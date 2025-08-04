@@ -51,7 +51,7 @@ const Projects = () => {
 
             <div
                 ref={containerRef}
-                className='relative h-full min-h-[100dvh] w-full flex flex-col justify-center items-center bg-black overflow-hidden'>
+                className='relative h-full w-full flex flex-col justify-center items-center bg-black overflow-hidden'>
 
                 <m.div
                     className="absolute inset-0 z-0"
@@ -87,7 +87,7 @@ const Projects = () => {
 
                     <Heading name="Projects" />
 
-                    <ProjectCard project={projectsData?.[0]} />
+                    <ProjectCard projects={projectsData} />
 
                 </div>
 

@@ -49,7 +49,7 @@ const About = () => {
 
             <div
                 ref={containerRef}
-                className='relative h-full min-h-[100dvh] w-full flex flex-col justify-center items-center bg-black overflow-hidden'>
+                className='relative h-full w-full flex flex-col justify-center items-center bg-black overflow-hidden pt-6 pb-12'>
 
                 <m.div
                     className="absolute inset-0 z-0"
@@ -91,7 +91,8 @@ const About = () => {
                         whileInView="visible"
                         viewport={{ once: true, amount: 0.4 }}>
 
-                        <m.div
+                        <m.h1
+                            className='text-center'
                             variants={{
                                 hidden: { opacity: 0, y: 60, scale: 0.95, filter: 'blur(5px)' },
                                 visible: {
@@ -99,10 +100,11 @@ const About = () => {
                                     transition: { duration: 0.8, delay: 0.1, type: 'spring', bounce: 0.3 }
                                 }
                             }}>
-                            <span>I&apos;m Akhil Harikumar, a full stack software developer with a passion for building clean, performant, and user-centric applications. I enjoy working across the stack, bringing together beautiful frontend interfaces with robust backend systems.{" "}</span>
-                        </m.div>
+                            <span>I&apos;m Akhil Harikumar - a full stack software developer with a passion for building clean, performant and user-centric applications. I enjoy working across the stack bringing together beautiful frontend interfaces with robust backend systems.{" "}</span>
+                        </m.h1>
 
-                        <m.div
+                        <m.h1
+                            className='text-center'
                             variants={{
                                 hidden: { opacity: 0, y: 60, scale: 0.95, filter: 'blur(5px)' },
                                 visible: {
@@ -117,11 +119,12 @@ const About = () => {
                                 url="https://gye.band"
                                 previewURL="https://www.gye.band"
                                 urlName="Groovin' You Entertainment" />
-                            <span>, where I help develop and maintain multiple portals that allow management, musicians and crew to manage their gigs. From venues & itineraries to setlists & repertoire management, I work on creating tools that streamline every aspect of an artist&apos;s workflow. Whether it&apos;s crafting seamless UI experiences or architecting backend features, I care deeply about building software that&apos;s both functional and enjoyable to use.
+                            <span> where I help develop and maintain multiple portals that allow management, musicians and crew to manage their gigs. From venues & itineraries to setlists & repertoire management, I work on creating tools that streamline every aspect of an artist&apos;s workflow. Whether it&apos;s crafting seamless UI experiences or architecting backend features, I care deeply about building software that&apos;s both functional and enjoyable to use.
                             </span>
-                        </m.div>
+                        </m.h1>
 
-                        <m.div
+                        <m.h1
+                            className='text-center'
                             variants={{
                                 hidden: { opacity: 0, y: 60, scale: 0.95, filter: 'blur(5px)' },
                                 visible: {
@@ -135,22 +138,22 @@ const About = () => {
                             <LinkPreview
                                 url="https://www.uta.edu/"
                                 urlName="The University of Texas at Arlington" />
-                            <span>, where I deepened my understanding of modern software systems. Some of the courses I took include Cloud Computing, Python Programming, Software Engineering, Database Systems and Web Data Management each of which shaped my approach to building scalable, maintainable, and efficient software.
+                            <span> where I deepened my understanding of modern software systems.
                             </span>
-                        </m.div>
+                        </m.h1>
                     </m.div>
 
                 </div>
 
                 <div
-                    className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[60px]"
+                    className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[500px] h-[300px] rounded-full blur-[60px]"
                     style={{
                         background: 'radial-gradient(circle, rgba(34,197,94,0.2) 0%, rgba(22,163,74,0.1) 40%, transparent 100%)'
                     }}
                 />
 
                 <div
-                    className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[500px] rounded-full blur-[60px]"
+                    className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[500px] h-[300px] rounded-full blur-[60px]"
                     style={{
                         background: 'radial-gradient(circle, rgba(239,68,68,0.2) 0%, rgba(220,38,38,0.1) 40%, transparent 100%)'
                     }}

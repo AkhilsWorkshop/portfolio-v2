@@ -34,7 +34,7 @@ const Footer = () => {
         <LazyMotion features={loadFeatures}>
 
             <m.button
-                className="hidden md:flex fixed bottom-8 right-8 z-40 w-14 h-14 bg-gradient-to-br from-gray-800 to-black border border-gray-700/50 rounded-full items-center justify-center shadow-2xl shadow-black/50 backdrop-blur-sm"
+                className="hidden md:flex fixed bottom-8 right-8 z-40 w-14 h-14 border rounded-full items-center justify-center shadow-2xl shadow-black/50 backdrop-blur-sm group  cursor-pointer"
                 initial={{ opacity: 0, scale: 0, y: 100 }}
                 animate={{
                     opacity: showScrollTop ? 1 : 0,
@@ -42,22 +42,15 @@ const Footer = () => {
                     y: showScrollTop ? 0 : 100,
                 }}
                 transition={{ duration: 0.3, ease: "easeOut" }}
-                whileHover={{ scale: 1.1, y: -2 }}
                 whileTap={{ scale: 0.95 }}
                 onClick={scrollToTop}
                 aria-label="Scroll to top">
 
-                <m.div
-                    animate={{ y: [-2, 2, -2] }}
-                    transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}>
-
-                    <FaArrowUp className="w-6 h-6 text-gray-300 cursor-pointer" />
-
-                </m.div>
+                <FaArrowUp className="w-6 h-6 text-gray-300 group-hover:text-primary duration-300 group-hover:scale-125" />
 
             </m.button>
 
-            <footer className="relative bg-black border-t border-gray-800/50 overflow-hidden">
+            <footer className="relative bg-black border-t border-white/10 overflow-hidden">
 
                 <div className="relative z-10 max-w-6xl mx-auto p-4 py-8">
 
@@ -69,19 +62,12 @@ const Footer = () => {
                         viewport={{ once: true }}>
 
                         <m.button
-                            className="w-12 h-12 bg-gradient-to-br from-gray-800 to-black border border-gray-700/50 rounded-full flex items-center justify-center shadow-lg shadow-black/30"
-                            whileHover={{ scale: 1.05, y: -1 }}
+                            className="w-12 h-12 border border-gray-700/50 rounded-full flex items-center justify-center shadow-lg shadow-black/30"
                             whileTap={{ scale: 0.95 }}
                             onClick={scrollToTop}
                             aria-label="Scroll to top">
 
-                            <m.div
-                                animate={{ y: [-1, 1, -1] }}
-                                transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}>
-
-                                <FaArrowUp className="w-6 h-6 text-gray-300" />
-
-                            </m.div>
+                            <FaArrowUp className="w-6 h-6 text-gray-300" />
 
                         </m.button>
 
@@ -89,12 +75,12 @@ const Footer = () => {
 
                     <m.div
                         className="text-center"
-                        initial={{ opacity: 0, y: -30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
+                        initial={{ opacity: 0, filter: 'blur(2px)' }}
+                        whileInView={{ opacity: 1, filter: 'blur(0px)' }}
+                        transition={{ duration: 1, ease: "easeInOut", delay: 0.2 }}
                         viewport={{ once: true }}>
 
-                        <p className="text-gray-300 text-sm">Orbiting smoothly with Next.js 15 & Tailwind CSS 4</p>
+                        <p className="text-gray-300 text-sm">Orbiting smoothly with Next.js & Tailwind CSS</p>
 
                     </m.div>
 
@@ -102,7 +88,7 @@ const Footer = () => {
                         className="mt-4 flex justify-center"
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
+                        transition={{ duration: 0.8 }}
                         viewport={{ once: true }}>
 
                         <div className="w-24 h-0.5 bg-gradient-to-r from-transparent via-primary to-transparent" />

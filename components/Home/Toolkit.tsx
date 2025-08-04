@@ -60,7 +60,7 @@ const Toolkit = () => {
 
             <div
                 ref={containerRef}
-                className='relative h-full min-h-[100dvh] w-full flex flex-col justify-center items-center overflow-hidden bg-black'>
+                className='relative h-full w-full flex flex-col justify-center items-center overflow-hidden bg-black pb-12 pt-6'>
 
                 <m.div
                     className="absolute inset-0 z-0"

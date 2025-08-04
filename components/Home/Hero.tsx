@@ -176,11 +176,6 @@ const Hero = () => {
 
                     <div className="flex flex-col items-start justify-start font-space">
 
-                        <h1
-                            className="text-xl lg:text-2xl text-white/70">
-                            Hi, I&apos;m
-                        </h1>
-
                         <m.h1
                             className="text-3xl md:text-5xl lg:text-6xl font-extrabold leading-tight w-full uppercase"
                             variants={ITEM_VARIANTS}>
