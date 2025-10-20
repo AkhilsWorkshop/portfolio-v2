@@ -1,11 +1,12 @@
 export const progressData = [
     {
         title: "Anna University",
-        date: "Sep 2017 - July 2021",
+        date: "Aug 2017 - May 2021",
         shortDescription: "Bachelor of Engineering - Computer Science Engineering",
-        fullDescription: "I did my Bachelor's in Computer Science, where I gained a strong foundation in data structures, web development, and cloud computing. The coursework equipped me with essential programming concepts and practical skills for building scalable applications.",
+        fullDescription: "I did my Bachelor's in Computer Science, where I gained a strong foundation in data structures, web development and cloud computing. The coursework equipped me with essential programming concepts and practical skills for building scalable applications.",
         tech: [
             "Python",
+            "TypeScript",
             "JavaScript",
             "HTML",
             "CSS",
@@ -13,11 +14,12 @@ export const progressData = [
         ]
     },
     {
-        title: "Freelance",
+        title: "Arun Pharma and Surgicals",
         date: "Jan 2020 - Feb 2021",
         shortDescription: "Full Stack Developer",
-        fullDescription: "I partnered with a local pharmacy during COVID-19 to launch an online contactless ordering app, shifting over 300 daily in-person visits to online orders. The platform enabled safer access to medicines, reduced manual work for staff through automated notifications and payments, and achieved top performance scores for a seamless customer experience.",
+        fullDescription: "I partnered with a local pharmacy to craft a contactless ordering app, shifting daily pharmacy visits to online orders during COVID-19. The platform enabled safer access to medicines, reduced manual work for staff through automated notifications, payments and achieved top performance scores for a seamless customer experience.",
         tech: [
+            "TypeScript",
             "JavaScript",
             "React",
             "Tailwind CSS",
@@ -38,6 +40,7 @@ export const progressData = [
         ],
         tech: [
             "Python",
+            "TypeScript",
             "JavaScript",
             "React",
             "HTML",
@@ -48,9 +51,9 @@ export const progressData = [
     },
     {
         title: "Groovin' You Entertainment, LTD",
-        date: "May 2023 - Present",
+        date: "Mar 2023 - Sep 2025",
         shortDescription: "Software Engineer",
-        fullDescription: "I developed and maintain the Artist Portal, allowing musicians to manage gigs, view job details, generate setlists, and match repertoire with client preferences. Band leaders can assign vocalists, report issues, and complete performance logs. I also built the Admin Portal for management to view job and artist data. Additionally, I created the Client Website to showcase bands, their services, media, and reviews on dedicated pages.",
+        fullDescription: "I developed and maintained the Artist Portal, allowing musicians to manage gigs, view job details, generate setlists and match repertoire with client preferences. Band leaders can assign vocalists, report issues and complete performance logs. I also built the Admin Portal for management to view job and artist data. Additionally, I created the Client Website to showcase bands, their services, media and reviews on dedicated pages that can be updated through CMS.",
         links: [
             {
                 label: "Artist Portal",
@@ -66,6 +69,7 @@ export const progressData = [
             }
         ],
         tech: [
+            "TypeScript",
             "JavaScript",
             "React",
             "Next.js",

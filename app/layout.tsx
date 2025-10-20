@@ -18,7 +18,7 @@ const exo2 = Exo_2({
 
 export const metadata = {
   title: "Akhil Harikumar",
-  description: "Full Stack Developer | Passionate about building clean, performant, and user-focused applications",
+  description: "Full Stack Developer | Passionate about building clean, performant and user-focused applications",
 }
 
 type RootLayoutProps = {

@@ -299,7 +299,8 @@ const ProgressBar = ({ data }: ProgressBarProps) => {
                             animate={showResumeButton ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                             transition={{ duration: 0.4, ease: "easeOut" }}
                             className="absolute left-1/2 transform -translate-x-1/2 -bottom-10 z-50 w-full md:w-auto px-4">
-                            <a href="/Akhil-Resume.pdf" target="_blank" rel="noopener noreferrer" className="relative inline-block w-full">
+
+                            <a href="https://www.akhilkumar.dev/Akhil-Resume.pdf" target="_blank" rel="noopener noreferrer" className="relative inline-block w-full">
 
                                 <div className="relative overflow-hidden px-8 py-3 rounded-lg font-medium text-white border-2 border-primary/60 bg-black/40 backdrop-blur-sm shadow-lg transition-all duration-300 group">
 

@@ -113,13 +113,13 @@ const About = () => {
                                 }
                             }}>
                             <span>
-                                Currently, I&apos;m a Software Engineer at{" "}
+                                I worked as a Software Engineer at{" "}
                             </span>
                             <LinkPreview
                                 url="https://gye.band"
                                 previewURL="https://www.gye.band"
                                 urlName="Groovin' You Entertainment" />
-                            <span> where I help develop and maintain multiple portals that allow management, musicians and crew to manage their gigs. From venues & itineraries to setlists & repertoire management, I work on creating tools that streamline every aspect of an artist&apos;s workflow. Whether it&apos;s crafting seamless UI experiences or architecting backend features, I care deeply about building software that&apos;s both functional and enjoyable to use.
+                            <span> where I developed and maintained multiple portals that allow management, musicians and crew to manage their gigs. From venues & itineraries to setlists & repertoire management, I worked on creating tools that streamline every aspect of an artist&apos;s workflow. Whether it&apos;s crafting seamless UI experiences or architecting backend features, I care deeply about building software that&apos;s both functional and enjoyable to use.
                             </span>
                         </m.h1>
 

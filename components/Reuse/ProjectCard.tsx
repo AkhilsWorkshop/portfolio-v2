@@ -15,8 +15,8 @@ type Project = {
     mobileImage: string,
     desc: string,
     tags: string[],
-    url: string,
-    github: string,
+    url?: string,
+    github?: string,
 }
 
 type ProjectCardProps = {
@@ -241,23 +241,32 @@ const ProjectCard = ({ projects }: ProjectCardProps) => {
                                 animate={{ opacity: isTransitioning ? 0 : 1, filter: isTransitioning ? 'blur(2px)' : 'blur(0px)' }}
                                 transition={{ duration: 0.3, delay: 0.3 }}
                                 className="flex items-center gap-4">
-                                <a
-                                    href={currentProject.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="group text-sm inline-flex items-center gap-1 border border-secondary px-2 py-1 rounded-md text-secondary cursor-pointer hover:brightness-75 duration-200">
-                                    View
 
-                                    <FaArrowRight size={16} className="-rotate-45 group-hover:rotate-315 duration-500" />
+                                {currentProject.url &&
 
-                                </a>
+                                    <a
+                                        href={currentProject.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="group text-sm inline-flex items-center gap-1 border border-secondary px-2 py-1 rounded-md text-secondary cursor-pointer hover:brightness-75 duration-200">
+                                        View
 
-                                <a
-                                    href={currentProject.github}
-                                    target="_blank"
-                                    rel="noopener noreferrer">
-                                    <FaGithub size={30} className="text-secondary cursor-pointer hover:brightness-75 duration-200" />
-                                </a>
+                                        <FaArrowRight size={16} className="-rotate-45 group-hover:rotate-315 duration-500" />
+
+                                    </a>
+
+                                }
+
+                                {currentProject.github &&
+
+                                    <a
+                                        href={currentProject.github}
+                                        target="_blank"
+                                        rel="noopener noreferrer">
+                                        <FaGithub size={30} className="text-secondary cursor-pointer hover:brightness-75 duration-200" />
+                                    </a>
+
+                                }
 
                             </m.div>
 
